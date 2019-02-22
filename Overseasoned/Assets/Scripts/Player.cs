@@ -43,12 +43,12 @@ public class Player : MonoBehaviour
 
         if ( Input.GetKey ( "left" ) )
         {
-            transform.Rotate(new Vector3(0, -10 * Speed * Time.deltaTime, 0));
+            transform.Rotate(new Vector3(0, -50 * Speed * Time.deltaTime, 0));
         }
 
         if (Input.GetKey( "right" ))
         {
-            transform.Rotate(new Vector3(0, 10 * Speed * Time.deltaTime, 0));
+            transform.Rotate(new Vector3(0, 50 * Speed * Time.deltaTime, 0));
         }
 
     }
