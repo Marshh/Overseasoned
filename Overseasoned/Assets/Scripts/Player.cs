@@ -10,21 +10,47 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         checkObject();
-        float movementModifierX = Input.GetAxisRaw("Horizontal");
-        float movementModifierZ = Input.GetAxisRaw("Vertical");
 
-     
-        Vector3 newVelocity = playerRigidbody.velocity;
-        newVelocity.x = movementModifierX * Speed;
-        newVelocity.z = movementModifierZ * Speed;
-        playerRigidbody.velocity = newVelocity;
+        movement();
+        //float movementModifierX = Input.GetAxisRaw("Horizontal");
+        //float movementModifierZ = Input.GetAxisRaw("Vertical");
+
+
+        //Vector3 newVelocity = playerRigidbody.velocity;
+        //newVelocity.x = movementModifierX * Speed;
+        //newVelocity.z = movementModifierZ * Speed;
+        //playerRigidbody.velocity = newVelocity;
+    }
+
+    void movement()
+    {
+        if ( Input.GetKey( "up" ) )
+        {
+            transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+        }
+
+        if ( Input.GetKey( "down" ) )
+        {
+            transform.Translate(Vector3.back * Speed * Time.deltaTime);
+        }
+
+        if ( Input.GetKey ( "left" ) )
+        {
+            transform.Rotate(new Vector3(0, -10 * Speed * Time.deltaTime, 0));
+        }
+
+        if (Input.GetKey( "right" ))
+        {
+            transform.Rotate(new Vector3(0, 10 * Speed * Time.deltaTime, 0));
+        }
+
     }
 
     void checkObject()
