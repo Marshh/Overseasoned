@@ -18,38 +18,18 @@ public class Player : MonoBehaviour
     {
         checkObject();
 
-        movement();
-        //float movementModifierX = Input.GetAxisRaw("Horizontal");
-        //float movementModifierZ = Input.GetAxisRaw("Vertical");
-
-
-        //Vector3 newVelocity = playerRigidbody.velocity;
-        //newVelocity.x = movementModifierX * Speed;
-        //newVelocity.z = movementModifierZ * Speed;
-        //playerRigidbody.velocity = newVelocity;
+        Movement();
     }
 
-    void movement()
+    void Movement()
     {
-        if ( Input.GetKey( "up" ) )
-        {
-            transform.Translate(Vector3.forward * Speed * Time.deltaTime);
-        }
+        float movementModifierZ = Input.GetAxisRaw("Vertical");
+        transform.Translate(new Vector3(0,0, movementModifierZ) * Speed * Time.deltaTime);
 
-        if ( Input.GetKey( "down" ) )
-        {
-            transform.Translate(Vector3.back * Speed * Time.deltaTime);
-        }
 
-        if ( Input.GetKey ( "left" ) )
-        {
-            transform.Rotate(new Vector3(0, -50 * Speed * Time.deltaTime, 0));
-        }
-
-        if (Input.GetKey( "right" ))
-        {
-            transform.Rotate(new Vector3(0, 50 * Speed * Time.deltaTime, 0));
-        }
+        float movementModifierX = Input.GetAxisRaw("Horizontal");
+        transform.Rotate(new Vector3(0, movementModifierX *50 * Speed * Time.deltaTime, 0));
+        
 
     }
 
