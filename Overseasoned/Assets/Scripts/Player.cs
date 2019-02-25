@@ -14,9 +14,13 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        checkObject();
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            checkObject();
+        }
+        
 
         Movement();
     }
@@ -28,17 +32,29 @@ public class Player : MonoBehaviour
 
 
         float movementModifierX = Input.GetAxisRaw("Horizontal");
-        transform.Rotate(new Vector3(0, movementModifierX *50 * Speed * Time.deltaTime, 0));
+        transform.Rotate(new Vector3(0, movementModifierX *25 * Speed * Time.deltaTime, 0));
         
 
     }
 
     void checkObject()
     {
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
-        Vector3 rayCastPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-        Debug.DrawRay(transform.position, fwd, Color.green);
-        bool raycasthit = Physics.Raycast(rayCastPos, fwd, 50);
+
+              Vector3 rayCastPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+         
+        //       Ray ray = new Ray(transform.position+new Vector3(0,.25f,0), fwd);
+        Vector3 fwd = transform.TransformDirection(new Vector3(0, 0, 5));
+        Debug.DrawRay(transform.position + new Vector3(0, .5f, 0), fwd, Color.green);
+        //The sphere can't spawn on the item collider. It won't detect it.
+        float thickness = .30f;
+        if(Physics.SphereCast(transform.position+ new Vector3(0, .5f, 0), thickness, fwd, out RaycastHit hit,2f))
+        {
+            if (hit.collider.CompareTag("Salt"))
+            {
+                Debug.Log("Salty");
+            }
+//            Debug.Log(hit.distance);
+        }
 
 
     }
