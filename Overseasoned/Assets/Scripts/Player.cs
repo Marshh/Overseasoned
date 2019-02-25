@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public Rigidbody playerRigidbody;
 
     public float Speed;
+
+    private GameObject inHandGameObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +54,7 @@ public class Player : MonoBehaviour
             if (hit.collider.CompareTag("Salt"))
             {
                 Debug.Log("Salty");
+                hit.collider.gameObject.SendMessage("OnPickup", hit.collider);
             }
 //            Debug.Log(hit.distance);
         }
