@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Station
   - Salt
+  - Customer
   layers:
   - Default
   - TransparentFX
