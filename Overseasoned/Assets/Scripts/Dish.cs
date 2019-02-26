@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Dish : MonoBehaviour
@@ -20,7 +21,7 @@ public class Dish : MonoBehaviour
         
     }
 
-    void addIngredient(string ingredient)
+    public void addIngredient(string ingredient)
     {
         ingredients.Add(ingredient);
     }
@@ -30,27 +31,38 @@ public class Dish : MonoBehaviour
         return Spiciness;
     }
 
-
-    void checkCurry()
+    public void clear()
+    {
+        hasAll = false;
+        ingredients.Clear();
+    }
+    public void checkCurry()
     {
         List<string> curryIngredients = new List<string> {"Rice", "Curry"};
-        hasAll = true;
-        for (int i = 0; i < curryIngredients.Count; ++i)
+        //        hasAll = true;
+        //        for (int i = 0; i < curryIngredients.Count; ++i)
+        //        {
+        //            bool found = false;
+        //            for(int j = 0; j < ingredients.Count; ++j)
+        //            {
+        //                if (curryIngredients[i] == ingredients[j])
+        //                {
+        //                    found = true;
+        //                }
+        //            }
+        //
+        //            if( !found )
+        //            {
+        //                hasAll = false;
+        //            }
+        //
+        //        }
+        if (curryIngredients.OrderBy(x => x).SequenceEqual(ingredients.OrderBy(x => x)))
         {
-            bool found = false;
-            for(int j = 0; j < ingredients.Count; ++j)
-            {
-                if (curryIngredients[i] == ingredients[j])
-                {
-                    found = true;
-                }
-            }
-
-            if( !found )
-            {
-                hasAll = false;
-            }
+            hasAll = true;
 
         }
+        
+
     }
 }

@@ -38,5 +38,7 @@ public class SpiceStation : MonoBehaviour
         Vector3 unitAbove = this.transform.position + Vector3.up;
 
         _spiceInstance = Instantiate(Spice, unitAbove, Quaternion.identity);
+        //Remove (clone)
+        _spiceInstance.name = Spice.name;
     }
 }

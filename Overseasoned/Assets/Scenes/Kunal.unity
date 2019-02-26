@@ -499,8 +499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9878de80788bf4199f56db88a5f529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRigidbody: {fileID: 619429636}
-  pickedUpItem: {fileID: 0}
+  DishPrefab: {fileID: 2005669249862276357, guid: 327e920f67dc8f147b977daf553f9f05,
+    type: 3}
   Speed: 10
 --- !u!1 &826127079
 GameObject:
