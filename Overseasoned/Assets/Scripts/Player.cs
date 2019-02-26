@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public Rigidbody playerRigidbody;
 
+    public GameObject pickedUpItem;
+
     public float Speed;
     // Start is called before the first frame update
     void Start()
@@ -59,7 +61,5 @@ public class Player : MonoBehaviour
         Vector3 rayCastPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
         Debug.DrawRay(transform.position, fwd, Color.green);
         bool raycasthit = Physics.Raycast(rayCastPos, fwd, 50);
-
-
     }
 }
