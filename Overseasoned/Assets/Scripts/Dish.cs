@@ -38,7 +38,7 @@ public class Dish : MonoBehaviour
         for (int i = 0; i < curryIngredients.Count; ++i)
         {
             bool found = false;
-            for(int j = 0; j < ingredients.Size; ++j)
+            for(int j = 0; j < ingredients.Count; ++j)
             {
                 if (curryIngredients[i] == ingredients[j])
                 {
