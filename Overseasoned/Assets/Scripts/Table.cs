@@ -27,10 +27,8 @@ public class Table : MonoBehaviour
     {
         if (Physics.SphereCast(sphereCastPos, radius, direction, out RaycastHit hitInfo, 3f))
         {
-            Debug.Log("hello");
             if (hitInfo.collider.CompareTag("Customer"))
             {
-                Debug.Log("Customer");
                 occupied = true;
             }
             else

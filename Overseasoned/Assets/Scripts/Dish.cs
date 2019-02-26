@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dish : MonoBehaviour
 {
     public int Spiciness;
-
+    public bool hasAll = false;
     public List<string> ingredients;
     // Start is called before the first frame update
     void awake()
@@ -31,10 +31,10 @@ public class Dish : MonoBehaviour
     }
 
 
-    bool checkCurry()
+    void checkCurry()
     {
         List<string> curryIngredients = new List<string> {"Rice", "Curry"};
-        bool hasAll = true;
+        hasAll = true;
         for (int i = 0; i < curryIngredients.Count; ++i)
         {
             bool found = false;
@@ -52,6 +52,5 @@ public class Dish : MonoBehaviour
             }
 
         }
-        return hasAll;
     }
 }
