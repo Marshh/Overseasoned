@@ -61,8 +61,9 @@ public class Player : MonoBehaviour
         {
             if (hit.collider.CompareTag("Salt"))
             {
-                Debug.Log("Salty");
-                hit.collider.gameObject.SendMessage("OnPickup", hit.collider);
+//                Debug.Log("Salty");
+//                hit.collider.gameObject.SendMessage("OnPickup", hit.collider);
+                Destroy(hit.collider.gameObject);
             }
 //            Debug.Log(hit.distance);
         }
