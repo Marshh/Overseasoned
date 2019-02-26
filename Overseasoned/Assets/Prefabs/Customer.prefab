@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8715154507301295170}
   - component: {fileID: 3837380077250279158}
   - component: {fileID: 72367644087447005}
-  - component: {fileID: 132154992203827458}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Customer
@@ -108,19 +107,3 @@ MonoBehaviour:
   spiceLvl: 0
   food: 
   timer: 0
---- !u!54 &132154992203827458
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645855621443347941}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0

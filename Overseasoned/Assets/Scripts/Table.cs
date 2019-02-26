@@ -11,9 +11,9 @@ public class Table : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        radius = 1f;
+        radius = .25f;
         sphereCastPos = this.transform.position;
-        direction = transform.TransformDirection(new Vector3(0, 0, 10f));
+        direction = transform.TransformDirection(new Vector3(-1f, 0, 0));
         occupied = false;
     }
 
@@ -25,11 +25,12 @@ public class Table : MonoBehaviour
 
     void checkOccupation()
     {
-        if (Physics.SphereCast(sphereCastPos, radius, direction, out RaycastHit hitInfo, 1f))
+        if (Physics.SphereCast(sphereCastPos, radius, direction, out RaycastHit hitInfo, 3f))
         {
             Debug.Log("hello");
             if (hitInfo.collider.CompareTag("Customer"))
             {
+                Debug.Log("Customer");
                 occupied = true;
             }
             else
