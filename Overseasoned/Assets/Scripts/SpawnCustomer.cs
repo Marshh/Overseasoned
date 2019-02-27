@@ -12,9 +12,11 @@ public class SpawnCustomer : MonoBehaviour
     private Table tableScript;
     public GameObject[] tables;
     int num;
+    public static SpawnCustomer instance;
     // Start is called before the first frame update
     void Awake()
     {
+        instance = this;
         tables = new GameObject[] { table1, table2, table3 };
         table1Pos = new Vector3(-6.5f, 1f, -6);
         table2Pos = new Vector3(-0.5f, 1f, -6);
@@ -28,7 +30,7 @@ public class SpawnCustomer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        num = Random.Range(0, 750);
+        num = Random.Range(0, 250);
         if(numberOfCustomers < 3 && num == 30)
         {
             SpawnCustomers();

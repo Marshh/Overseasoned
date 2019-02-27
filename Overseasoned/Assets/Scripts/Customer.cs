@@ -13,10 +13,11 @@ public class Customer : MonoBehaviour
     public Vector3 direction;
     public float radius;
     public bool completed;
-
+    public static Customer instance;
     // Start is called before the first frame update
     void Awake()
     {
+        instance = this;
         radius = 0.25f;
         sphereCastPos = this.transform.position;
         direction = transform.TransformDirection(new Vector3(1f, 0, 0));
@@ -33,6 +34,7 @@ public class Customer : MonoBehaviour
         timer -= Time.deltaTime;
         if (completed || timer < 0)
         {
+            SpawnCustomer.instance.numberOfCustomers -= 1;
             CustomerLeft();
         }
         CheckDish();
@@ -41,7 +43,6 @@ public class Customer : MonoBehaviour
     void CustomerLeft()
     {
         Destroy(this.gameObject);
-        
     }
 
     void CheckDish()
