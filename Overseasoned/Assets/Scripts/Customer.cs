@@ -35,6 +35,7 @@ public class Customer : MonoBehaviour
         {
             CustomerLeft();
         }
+        CheckDish();
     }
 
     void CustomerLeft()
@@ -45,11 +46,16 @@ public class Customer : MonoBehaviour
 
     void CheckDish()
     {
+        Debug.DrawRay(transform.position, direction, Color.green);
+
         if (Physics.SphereCast(sphereCastPos, radius, direction, out RaycastHit hitInfo, 3f))
         {
             if(hitInfo.collider.CompareTag("Dish"))
-            {
+            {   
+                print("success");
+                hitInfo.collider.gameObject.GetComponent<Dish>().checkCurry();
                 completed = hitInfo.collider.gameObject.GetComponent<Dish>().hasAll;
+                hitInfo.collider.gameObject.GetComponent<Dish>().clear();
             }
         }
     }
