@@ -15,6 +15,7 @@ public class Table : MonoBehaviour
         sphereCastPos = this.transform.position;
         direction = transform.TransformDirection(new Vector3(-1f, 0, 0));
         occupied = false;
+        Debug.DrawRay(sphereCastPos, direction);
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class Table : MonoBehaviour
 
     void checkOccupation()
     {
-        if (Physics.SphereCast(sphereCastPos, radius, direction, out RaycastHit hitInfo, 3f))
+        if (Physics.Raycast(sphereCastPos, direction, out RaycastHit hitInfo))
         {
             if (hitInfo.collider.CompareTag("Customer"))
             {
