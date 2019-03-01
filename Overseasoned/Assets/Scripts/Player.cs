@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
     public GameObject DishPrefab;
     private GameObject dish;
     public float Speed;
+
+    int floorMask;
+
+    
     
     // Start is called before the first frame update
     void Start()
@@ -14,28 +18,35 @@ public class Player : MonoBehaviour
         IniDish();
     }
 
-    // Update is called once per frame
+    void Update()
+    {
+        Movement();
+    }
+
     void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             checkObject();
         }
-        
 
-        Movement();
     }
 
     void Movement()
     {
+        Vector3 mousePos = Input.mousePosition;
+
+        mousePos.z = Mathf.Abs(Camera.main.transform.position.y - transform.position.y);
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+        mousePos.y = transform.position.y;
+
+        transform.LookAt(mousePos, Vector3.up);
+
+
         float movementModifierZ = Input.GetAxisRaw("Vertical");
         transform.Translate(new Vector3(0,0, movementModifierZ) * Speed * Time.deltaTime);
-
-
-        float movementModifierX = Input.GetAxisRaw("Horizontal");
-        transform.Rotate(new Vector3(0, movementModifierX *25 * Speed * Time.deltaTime, 0));
         
-
     }
 
     void checkObject()
