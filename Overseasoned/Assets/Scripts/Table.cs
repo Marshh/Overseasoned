@@ -38,7 +38,7 @@ public class Table : MonoBehaviour
 
         if (Physics.SphereCast(transform.position-new Vector3(0,2,0), radius, direction, out RaycastHit hit, Mathf.Infinity,layerMask))
         {
-            if (hit.collider.CompareTag("Dish") && Input.GetKeyDown(KeyCode.E))
+            if (hit.collider.CompareTag("Dish") && Input.GetKeyDown(KeyCode.E) && dish==null)
             {
                 print("success");
                 dish = hit.collider.gameObject;
