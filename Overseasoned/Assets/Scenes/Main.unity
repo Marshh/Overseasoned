@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 162661779}
   - component: {fileID: 162661778}
   - component: {fileID: 162661777}
+  - component: {fileID: 162661781}
   m_Layer: 0
   m_Name: DishWasher
   m_TagString: Untagged
@@ -294,6 +295,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &162661781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162661776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d9c90d8c8a840499bdfeb962daea56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CleanDishPrefab: {fileID: 2726587732665469218, guid: 134a70b00d3ddbb49af8ec74b1cc3f3f,
+    type: 3}
+  DirtyDishPrefab: {fileID: 1008773503268440319, guid: 8f3087fe47395594385092c39ce868ea,
+    type: 3}
 --- !u!1001 &285607506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -735,7 +752,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
