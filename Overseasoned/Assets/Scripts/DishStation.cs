@@ -27,7 +27,7 @@ public class DishStation : MonoBehaviour
 
     }
 
-    void spawnDish(float height)
+    public void spawnDish(float height)
     {
         _countDown = SpawnTimer;
         Vector3 unitAbove = this.transform.position+new Vector3(0,height,0);

@@ -9,16 +9,16 @@ public class Table : MonoBehaviour
     public float radius;
     public bool occupied;
     public GameObject customer;
-    public bool hasPlate;
-    private bool hasDish;
+    public GameObject dish;
     // Start is called before the first frame update
     void Start()
     {
-        radius = .64f;
+        radius = .90f;
         sphereCastPos = this.transform.position;
         direction = transform.TransformDirection(new Vector3(0, 1f, 0));
         occupied = false;
         Debug.DrawRay(sphereCastPos, direction);
+        
     }
 
     // Update is called once per frame
@@ -36,14 +36,17 @@ public class Table : MonoBehaviour
     {
         int layerMask = 1 << 8;
 
-        if (Physics.SphereCast(transform.position-new Vector3(0,2,0), radius, direction, out RaycastHit hitInfo, Mathf.Infinity,layerMask))
+        if (Physics.SphereCast(transform.position-new Vector3(0,2,0), radius, direction, out RaycastHit hit, Mathf.Infinity,layerMask))
         {
-            if (hitInfo.collider.CompareTag("Dish") && Input.GetKeyDown(KeyCode.E))
+            if (hit.collider.CompareTag("Dish") && Input.GetKeyDown(KeyCode.E))
             {
                 print("success");
-//                hitInfo.collider.gameObject.GetComponent<Dish>().checkCurry();
-//                completed = hitInfo.collider.gameObject.GetComponent<Dish>().hasAll;
-//                hitInfo.collider.gameObject.GetComponent<Dish>().clear();
+                dish = hit.collider.gameObject;
+                dish.GetComponent<Rigidbody>().detectCollisions = true;
+                dish.GetComponent<Rigidbody>().useGravity = false;
+                dish.GetComponent<Rigidbody>().isKinematic = true;
+                dish.transform.SetParent(transform);
+                dish.transform.localPosition = new Vector3(-1, dish.GetComponent<Renderer>().bounds.size.y, 0);
             }
         }
     }

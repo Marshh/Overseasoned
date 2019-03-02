@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
                 dish.GetComponent<Rigidbody>().useGravity = false;
                 dish.GetComponent<Rigidbody>().isKinematic = true;
                 dish.transform.SetParent(transform);
-                dish.transform.localPosition = new Vector3(0, 0, 1);
+                dish.transform.localPosition = new Vector3(0, .25f, 1);
                 
             }
         }

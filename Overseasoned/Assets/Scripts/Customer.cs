@@ -14,6 +14,8 @@ public class Customer : MonoBehaviour
     public float radius;
     public bool completed;
     public static Customer instance;
+
+    public GameObject DishStation;
     // Start is called before the first frame update
     void Awake()
     {
@@ -43,6 +45,8 @@ public class Customer : MonoBehaviour
     void CustomerLeft()
     {
         Destroy(this.gameObject);
+        Destroy(this.transform.parent.gameObject.GetComponent<Table>().dish);
+        GameObject.Find("DishStation").GetComponent<DishStation>().spawnDish(1f);
     }
 
 //    void CheckDish()
