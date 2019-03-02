@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject DishPrefab;
-    private GameObject dish;
+    public GameObject dish;
     public float Speed;
 
     int floorMask;
