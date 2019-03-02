@@ -5,13 +5,7 @@ using UnityEngine;
 public class Customer : MonoBehaviour
 {
     //public GameObject dish;
-    public int spiceLvl;
-    private string[] item;
-    public string food;
     public float timer;
-    private Vector3 sphereCastPos;
-    public Vector3 direction;
-    public float radius;
     public bool completed;
     public static Customer instance;
 
@@ -20,14 +14,8 @@ public class Customer : MonoBehaviour
     void Awake()
     {
         instance = this;
-        radius = 0.25f;
-        sphereCastPos = this.transform.position;
-        direction = transform.TransformDirection(new Vector3(1f, 0, 0));
-        item = new string[] {"Rice bowl", "Curry"};
-        int num = Random.Range(0, 2);
-        spiceLvl = Random.Range(0, 3);
-        food = item[num];
-        timer = 30f;
+
+        completed = false;
     }
 
     // Update is called once per frame
@@ -36,7 +24,10 @@ public class Customer : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            SpawnCustomer.instance.numberOfCustomers -= 1;
+            
+            
+            if(completed) RespawnDish();
+
             CustomerLeft();
         }
         //CheckDish();
@@ -44,11 +35,16 @@ public class Customer : MonoBehaviour
 
     void CustomerLeft()
     {
+        SpawnCustomer.instance.numberOfCustomers -= 1;
         Destroy(this.gameObject);
+
+    }
+
+    void RespawnDish()
+    {
         Destroy(this.transform.parent.gameObject.GetComponent<Table>().dish);
         GameObject.Find("DishStation").GetComponent<DishStation>().spawnDish(1f);
     }
-
 //    void CheckDish()
 //    {
 //        Debug.DrawRay(transform.position, direction, Color.green);

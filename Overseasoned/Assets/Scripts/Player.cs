@@ -89,6 +89,22 @@ public class Player : MonoBehaviour
                 dish.transform.localPosition = new Vector3(0, .25f, 1);
                 
             }
+            else if (hit.collider.CompareTag("PrepStation"))
+            {
+                //Place plate
+                if (dish != null)
+                {
+                    hit.collider.gameObject.GetComponent<PrepStation>().PlaceDish(dish);
+                    dish = null;
+                }
+                else
+                {
+                    dish=hit.collider.gameObject.GetComponent<PrepStation>().dish;
+                    hit.collider.gameObject.GetComponent<PrepStation>().dish = null;
+                    dish.transform.SetParent(transform);
+                    dish.transform.localPosition = new Vector3(0, .25f, 1);
+                }
+            }
         }
     }
 

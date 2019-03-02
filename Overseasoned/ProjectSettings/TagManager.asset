@@ -9,6 +9,7 @@ TagManager:
   - Customer
   - Spice
   - Dish
+  - PrepStation
   layers:
   - Default
   - TransparentFX

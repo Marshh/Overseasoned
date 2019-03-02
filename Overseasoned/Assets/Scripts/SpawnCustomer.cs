@@ -28,7 +28,7 @@ public class SpawnCustomer : MonoBehaviour
     void FixedUpdate()
     {
         
-        if (numberOfCustomers < 3 && Random.value < 0.004f)
+        if (numberOfCustomers < 3 && Random.value < 0.01f)
         {
             SpawnCustomers();
         }
