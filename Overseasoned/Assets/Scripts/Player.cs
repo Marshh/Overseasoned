@@ -88,6 +88,6 @@ public class Player : MonoBehaviour
     void IniDish()
     {
         dish = Instantiate(DishPrefab, transform);
-        dish.transform.localPosition = new Vector3(0, -.25f, 1);
+        dish.transform.localPosition = new Vector3(0, 0, 1);
     }
 }

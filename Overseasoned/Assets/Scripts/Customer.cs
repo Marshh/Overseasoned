@@ -32,12 +32,12 @@ public class Customer : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if (completed || timer < 0)
+        if (timer < 0)
         {
             SpawnCustomer.instance.numberOfCustomers -= 1;
             CustomerLeft();
         }
-        CheckDish();
+        //CheckDish();
     }
 
     void CustomerLeft()
@@ -45,19 +45,19 @@ public class Customer : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    void CheckDish()
-    {
-        Debug.DrawRay(transform.position, direction, Color.green);
-
-        if (Physics.SphereCast(sphereCastPos, radius, direction, out RaycastHit hitInfo, 3f))
-        {
-            if(hitInfo.collider.CompareTag("Dish"))
-            {   
-                print("success");
-                hitInfo.collider.gameObject.GetComponent<Dish>().checkCurry();
-                completed = hitInfo.collider.gameObject.GetComponent<Dish>().hasAll;
-                hitInfo.collider.gameObject.GetComponent<Dish>().clear();
-            }
-        }
-    }
+//    void CheckDish()
+//    {
+//        Debug.DrawRay(transform.position, direction, Color.green);
+//
+//        if (Physics.SphereCast(sphereCastPos, radius, direction, out RaycastHit hitInfo, 3f))
+//        {
+//            if(hitInfo.collider.CompareTag("Dish"))
+//            {   
+//                print("success");
+//                hitInfo.collider.gameObject.GetComponent<Dish>().checkCurry();
+//                completed = hitInfo.collider.gameObject.GetComponent<Dish>().hasAll;
+//                hitInfo.collider.gameObject.GetComponent<Dish>().clear();
+//            }
+//        }
+//    }
 }

@@ -37,8 +37,10 @@ public class SpawnCustomer : MonoBehaviour
     {
         int tableNum = Random.Range(0, childList.Count);
         Transform tableTransform = childList[tableNum];
+        if (tableTransform.gameObject.GetComponent<Table>().customer != null) return;
         GameObject customerSpawn=Instantiate(customer, tableTransform);
         customerSpawn.transform.localPosition=new Vector3(-2, 0, 0);
+        tableTransform.gameObject.GetComponent<Table>().SetCustomer(customerSpawn);
         numberOfCustomers += 1;
     }
 }
