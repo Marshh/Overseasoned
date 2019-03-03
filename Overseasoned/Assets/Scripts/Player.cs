@@ -15,23 +15,32 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-//        IniDish();
+        //        IniDish();
+       
+    }
+
+    void Update()
+    {
+        Movement();
     }
 
    
     void FixedUpdate()
     {
+        
         if (Input.GetKeyDown(KeyCode.E))
         {
             checkObject();
         }
-        Movement();
+        
 
     }
 
     void Movement()
     {
         Vector3 mousePos = Input.mousePosition;
+        Vector3 mousePos2 = Input.mousePosition;
+        Vector3 playerPos = Camera.main.WorldToScreenPoint(transform.position);
 
         mousePos.z = Mathf.Abs(Camera.main.transform.position.y - transform.position.y);
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
@@ -40,9 +49,14 @@ public class Player : MonoBehaviour
 
         transform.LookAt(mousePos, Vector3.up);
 
+        
 
-        float movementModifierZ = Input.GetAxisRaw("Vertical");
-        transform.Translate(new Vector3(0,0, movementModifierZ) * Speed * Time.deltaTime);
+        if ( ( Mathf.Abs( playerPos.x - mousePos2.x ) > 20 ) || (Mathf.Abs(playerPos.y - mousePos2.y) > 60))
+        {
+            //Debug.Log("IS MY CONDITIONAL A JOKE TO YOU, C SHARP");
+            float movementModifierZ = Input.GetAxisRaw("Vertical");
+            transform.Translate(new Vector3(0, 0, movementModifierZ) * Speed * Time.deltaTime);
+        }
         
     }
 
