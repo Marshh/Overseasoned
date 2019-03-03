@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Spice: {fileID: 0}
   SpawnTimer: 10
+  text: {fileID: 8734423842587442244}
 --- !u!1 &1085898870392818002
 GameObject:
   m_ObjectHideFlags: 0

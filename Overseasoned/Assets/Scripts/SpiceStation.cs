@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpiceStation : MonoBehaviour
@@ -11,10 +12,15 @@ public class SpiceStation : MonoBehaviour
     public float SpawnTimer;
 
     private float _countDown;
+
+    public TextMeshProUGUI TipText;
+
     // Start is called before the first frame update
     void Start()
     {
         spawnSpice();
+        TipText.text = $"{Spice.name}\nStation";
+
     }
 
     // Update is called once per frame

@@ -320,6 +320,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8746703108856529803, guid: 88a4a9c62c379514e8f69f7783d077d1,
         type: 3}
+    - target: {fileID: 769952594, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
+      propertyPath: TipText
+      value: 
+      objectReference: {fileID: 379906025}
     - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -328,6 +332,43 @@ PrefabInstance:
     - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
         type: 3}
       propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
+        type: 3}
+      propertyPath: m_text
+      value: 'Spice
+
+        Station'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 37.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -392,6 +433,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3984354796389019341, guid: 5eba61738b0292a45a422315459c4486,
         type: 3}
+    - target: {fileID: 769952594, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
+      propertyPath: TipText
+      value: 
+      objectReference: {fileID: 1181327689}
     - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -689,6 +734,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 098f6aee5a2d4c247bcf0583b5fc776b, type: 3}
+--- !u!114 &379906025 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 285607506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &518190821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1240,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 65.79401, y: 0, z: 0}
+--- !u!114 &1181327689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 290621601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1198531892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4394839556963223254, guid: 098f6aee5a2d4c247bcf0583b5fc776b,
