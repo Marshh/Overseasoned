@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //        IniDish();
 
     }
 
@@ -101,9 +100,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    void IniDish()
-    {
-        item = Instantiate(DishPrefab, transform);
-        item.transform.localPosition = new Vector3(0, 0, 1);
-    }
+  
 }

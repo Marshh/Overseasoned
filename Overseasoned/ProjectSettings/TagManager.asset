@@ -10,6 +10,8 @@ TagManager:
   - Spice
   - Dish
   - PrepStation
+  - DishStation
+  - SpiceStation
   layers:
   - Default
   - TransparentFX
