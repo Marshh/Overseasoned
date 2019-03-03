@@ -41,4 +41,17 @@ public class SpiceStation : MonoBehaviour
         //Remove (clone)
         _spiceInstance.name = Spice.name;
     }
+
+    public GameObject getSpice(Transform player)
+    {
+        _spiceInstance.GetComponent<Rigidbody>().detectCollisions = true;
+        _spiceInstance.GetComponent<Rigidbody>().useGravity = false;
+        _spiceInstance.GetComponent<Rigidbody>().isKinematic = true;
+        _spiceInstance.transform.SetParent(player);
+        GameObject item = _spiceInstance;
+        _spiceInstance = null;
+
+        return item;
+
+    }
 }

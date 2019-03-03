@@ -38,8 +38,13 @@ public class DishStation : MonoBehaviour
         dishes.Push(_DishInstance);
     }
 
-    public GameObject getDish()
+    public GameObject getDish(Transform player)
     {
-        return dishes.Pop();
+        GameObject dish = dishes.Pop();
+        dish.GetComponent<Rigidbody>().detectCollisions = true;
+        dish.GetComponent<Rigidbody>().useGravity = false;
+        dish.GetComponent<Rigidbody>().isKinematic = true;
+        dish.transform.SetParent(player);
+        return dish;
     }
 }

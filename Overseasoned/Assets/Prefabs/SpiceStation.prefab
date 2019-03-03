@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 769952594}
   m_Layer: 0
   m_Name: SpiceStation
-  m_TagString: Station
+  m_TagString: SpiceStation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
