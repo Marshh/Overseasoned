@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(transform.position + new Vector3(0, -.25f, 0), fwd, out hit, 2f))
         {
-            if (hit.collider.CompareTag("Station"))
+            if (hit.collider.CompareTag("DishStation"))
             {
                 //Pick up plate
                 dish = hit.collider.gameObject.GetComponent<DishStation>().getDish();
