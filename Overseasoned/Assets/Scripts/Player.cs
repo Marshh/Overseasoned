@@ -70,12 +70,12 @@ public class Player : MonoBehaviour
 
         Vector3 fwd = transform.TransformDirection(new Vector3(0, 0, 5));
         //Debug.DrawRay(transform.position + new Vector3(0, .5f, 0), fwd, Color.green);
-        Debug.DrawRay(transform.position + new Vector3(0, -.25f, 0), fwd);
+        Debug.DrawRay(transform.position + new Vector3(0, -.50f, 0), fwd);
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position + new Vector3(0, -.25f, 0), fwd, out hit, 2f))
+        if (Physics.Raycast(transform.position + new Vector3(0, -.50f, 0), fwd, out hit, 2f))
         {
-            if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("DishStation"))
+            if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("DishStation") && item == null)
             {
                 //Pick up plate
                 item = hit.collider.gameObject.GetComponent<DishStation>().getDish(transform);
@@ -90,7 +90,25 @@ public class Player : MonoBehaviour
                     hit.collider.gameObject.GetComponent<PrepStation>().PlaceDish(item);
                     item = null;
                 }
-                else if (item != null && item.CompareTag("Spice") && Input.GetKey(KeyCode.E))
+                else if (item != null && item.CompareTag("Spice") && Input.GetKey(KeyCode.E) && hit.collider.gameObject.GetComponent<PrepStation>().isOccupied == true)
+                {
+                    if (LoadingBar.fillAmount < 1.0f)
+                    {
+                        LoadingBar.fillAmount += 0.025f;
+                    }
+
+                    else if (LoadingBar.fillAmount >= 1.0f)
+                    {
+                        int spiceLevel = item.gameObject.GetComponent<PickedUp>().spiceLevel;
+                        LoadingBar.fillAmount = 0;
+                        hit.collider.gameObject.GetComponent<PrepStation>().AddIngredient(item.name);
+                        hit.collider.gameObject.GetComponent<PrepStation>().AddSpice(item.name, spiceLevel);
+                        Destroy(item);
+                        DisplayAlertText($"Added {item.name}");
+                    }
+
+                }
+                else if (item != null && item.CompareTag("Skillet") && Input.GetKey(KeyCode.E) && hit.collider.gameObject.GetComponent<PrepStation>().isOccupied == true)
                 {
                     if (LoadingBar.fillAmount < 1.0f)
                     {
@@ -112,7 +130,7 @@ public class Player : MonoBehaviour
                     item.transform.localPosition = _itemLocalPosition;
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("SpiceStation"))
+            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("SpiceStation") && item == null)
             {
                 item = hit.collider.gameObject.GetComponent<SpiceStation>().getSpice(this.transform);
                 item.transform.localPosition = _itemLocalPosition;
@@ -120,12 +138,8 @@ public class Player : MonoBehaviour
 
             else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("MealStation"))
             {
-                item = hit.collider.gameObject.GetComponent<MealSpawners>().getDish();
-                item.GetComponent<Rigidbody>().detectCollisions = true;
-                item.GetComponent<Rigidbody>().useGravity = false;
-                item.GetComponent<Rigidbody>().isKinematic = true;
-                item.transform.SetParent(transform);
-                item.transform.localPosition = new Vector3(0, .25f, 1);
+                item = hit.collider.gameObject.GetComponent<MealSpawners>().getSkillet(transform);
+                item.transform.localPosition = -_itemLocalPosition;
             }
             else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Trash"))
             {

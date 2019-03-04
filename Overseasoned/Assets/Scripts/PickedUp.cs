@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class PickedUp : MonoBehaviour
 {
-    public Renderer rend;
+    public int spiceLevel;
+    private Dictionary<string, int> spices;
     // Start is called before the first frame update
     void Start()
     {
-       rend = GetComponent<Renderer>();
+        spices = new Dictionary<string, int>
+        {
+            {"Salt", 1},
+            {"Paprika", 1},
+            {"Garlic", 2},
+            {"Black Pepper", 2},
+            {"Chipotle", 3},
+            {"Chili Flakes", 3},
+            {"Ghost Pepper", 4}
+        };
+        spiceLevel = spices[this.name];
     }
 
     // Update is called once per frame
@@ -16,9 +27,5 @@ public class PickedUp : MonoBehaviour
     {
         
     }
-
-    public void OnPickup(Collider o)
-    {
-        rend.enabled = false;
-    }
+    
 }

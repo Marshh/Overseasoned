@@ -6,13 +6,9 @@ using UnityEngine;
 public class SpiceStation : MonoBehaviour
 {
     public GameObject Spice;
-
     private GameObject _spiceInstance;
-
     public float SpawnTimer;
-
     private float _countDown;
-
     public TextMeshProUGUI TipText;
 
     // Start is called before the first frame update
@@ -56,8 +52,6 @@ public class SpiceStation : MonoBehaviour
         _spiceInstance.transform.SetParent(player);
         GameObject item = _spiceInstance;
         _spiceInstance = null;
-
         return item;
-
     }
 }
