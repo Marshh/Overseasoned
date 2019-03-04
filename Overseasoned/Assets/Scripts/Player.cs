@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +14,10 @@ public class Player : MonoBehaviour
 
     int floorMask;
 
+    public Image LoadingBar;
+    public TextMeshProUGUI AlertText;
+
+    private float _alerttexttimer;
 
 
     // Start is called before the first frame update
@@ -22,17 +28,23 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            LoadingBar.fillAmount = 0;
+        }
+        Interaction();
         Movement();
+        ClearAlertText();
     }
 
 
     void FixedUpdate()
     {
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            checkObject();
-        }
+ 
+
+ 
+
 
 
     }
@@ -59,9 +71,11 @@ public class Player : MonoBehaviour
             transform.Translate(new Vector3(0, 0, movementModifierZ) * Speed * Time.deltaTime);
         }
 
+
     }
 
-    void checkObject()
+
+    void Interaction()
     {
 
         Vector3 fwd = transform.TransformDirection(new Vector3(0, 0, 5));
@@ -69,30 +83,46 @@ public class Player : MonoBehaviour
         Debug.DrawRay(transform.position + new Vector3(0, -.25f, 0), fwd);
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position + new Vector3(0, -.25f, 0), fwd, out hit, 2f))
+        if ( Physics.Raycast(transform.position + new Vector3(0, -.25f, 0), fwd, out hit, 2f))
         {
-            if (hit.collider.CompareTag("DishStation"))
+            if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("DishStation"))
             {
                 //Pick up plate
                 item = hit.collider.gameObject.GetComponent<DishStation>().getDish(transform);
                 item.transform.localPosition = _itemLocalPosition;
 
             }
-            else if (hit.collider.CompareTag("PrepStation"))
+            else if ( hit.collider.CompareTag("PrepStation"))
             {
                 //Place plate
-                if (item != null && item.CompareTag("Dish"))
+                if (Input.GetKeyDown(KeyCode.E) && item != null && item.CompareTag("Dish"))
                 {
                     hit.collider.gameObject.GetComponent<PrepStation>().PlaceDish(item);
                     item = null;
                 }
-                else if (item == null)
+                else if (item != null && item.CompareTag("Spice") && Input.GetKey(KeyCode.E))
+                {
+                    if (LoadingBar.fillAmount < 1.0f)
+                    {
+                        LoadingBar.fillAmount += 0.025f;
+                    }
+
+                    else if (LoadingBar.fillAmount >= 1.0f)
+                    {
+                        LoadingBar.fillAmount = 0;
+                        hit.collider.gameObject.GetComponent<PrepStation>().AddIngredient(item.name);
+                        Destroy(item);
+                        DisplayAlertText($"Added {item.name}");
+                    }
+                    
+                }
+                else if (Input.GetKeyDown(KeyCode.E) && item == null)
                 {
                     item = hit.collider.gameObject.GetComponent<PrepStation>().PickUpDish(transform);
                     item.transform.localPosition = _itemLocalPosition;
                 }
             }
-            else if (hit.collider.CompareTag("SpiceStation"))
+            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("SpiceStation"))
             {
                 item = hit.collider.gameObject.GetComponent<SpiceStation>().getSpice(this.transform);
                 item.transform.localPosition = _itemLocalPosition;
@@ -100,5 +130,25 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    void DisplayAlertText(string message)
+    {
+        
+        _alerttexttimer = 4f;
+        AlertText.text = message;
+
+    }
+
+    void ClearAlertText()
+    {
+
+        if (_alerttexttimer <= 0)
+        {
+            AlertText.text = "";
+        }else if (AlertText.text != "")
+        {
+            _alerttexttimer -= Time.deltaTime;
+        }
+    }
   
 }
