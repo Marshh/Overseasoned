@@ -9,6 +9,10 @@ TagManager:
   - PrepStation
   - Undefined
   - MealStation
+  - Dish
+  - Customer
+  - Spice
+  - Trash
   layers:
   - Default
   - TransparentFX
