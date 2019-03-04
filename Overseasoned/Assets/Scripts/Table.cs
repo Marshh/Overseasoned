@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class FloatUnityEvent : UnityEvent<float> { }
 public class Table : MonoBehaviour
 {
     private Vector3 sphereCastPos;
@@ -12,8 +10,6 @@ public class Table : MonoBehaviour
     public bool occupied;
     public GameObject customer;
     public GameObject dish;
-
-    public FloatUnityEvent OnScoreEvent = new FloatUnityEvent();
     // Start is called before the first frame update
     void Start()
     {
@@ -49,13 +45,11 @@ public class Table : MonoBehaviour
                 dish.transform.SetParent(transform);
                 dish.transform.localPosition = new Vector3(-1, dish.GetComponent<Renderer>().bounds.size.y, 0);
                 dish.GetComponent<Rigidbody>().detectCollisions = false;
-//                if (hit.collider.gameObject.name == customer.GetComponent<Customer>().food)
-//                {
-//                    //customer.GetComponent<Customer>().spiceLevel == hit.collider.gameObject.GetComponent<Dish>().Spiciness
-//                    print("success");
-//                }
-                OnScoreEvent.Invoke(10);
-
+                if (hit.collider.gameObject.name == customer.GetComponent<Customer>().food)
+                {
+                    //customer.GetComponent<Customer>().spiceLevel == hit.collider.gameObject.GetComponent<Dish>().Spiciness
+                    print("success");
+                }
             }
         }
     }

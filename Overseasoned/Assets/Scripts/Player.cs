@@ -38,7 +38,17 @@ public class Player : MonoBehaviour
     }
 
 
-  
+    void FixedUpdate()
+    {
+
+ 
+
+ 
+
+
+
+    }
+
     void Movement()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -73,7 +83,7 @@ public class Player : MonoBehaviour
         Debug.DrawRay(transform.position + new Vector3(0, -.25f, 0), fwd);
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position + new Vector3(0, -.25f, 0), fwd, out hit, 2f))
+        if ( Physics.Raycast(transform.position + new Vector3(0, -.25f, 0), fwd, out hit, 2f))
         {
             if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("DishStation"))
             {
@@ -82,7 +92,7 @@ public class Player : MonoBehaviour
                 item.transform.localPosition = _itemLocalPosition;
 
             }
-            else if (hit.collider.CompareTag("PrepStation"))
+            else if ( hit.collider.CompareTag("PrepStation"))
             {
                 //Place plate
                 if (Input.GetKeyDown(KeyCode.E) && item != null && item.CompareTag("Dish"))
@@ -104,7 +114,7 @@ public class Player : MonoBehaviour
                         Destroy(item);
                         DisplayAlertText($"Added {item.name}");
                     }
-
+                    
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && item == null)
                 {
@@ -126,11 +136,6 @@ public class Player : MonoBehaviour
                 item.GetComponent<Rigidbody>().isKinematic = true;
                 item.transform.SetParent(transform);
                 item.transform.localPosition = new Vector3(0, .25f, 1);
-            }
-            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Trash"))
-            {
-                hit.collider.gameObject.GetComponent<Trash>().deleteDish(this.transform);
-                item = null;
             }
         }
     }
