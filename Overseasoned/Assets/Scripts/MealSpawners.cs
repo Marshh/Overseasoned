@@ -4,50 +4,61 @@ using UnityEngine;
 
 public class MealSpawners : MonoBehaviour
 {
-    public GameObject dish;
-    private GameObject dishInstance;
+    public GameObject skillet;
+    private GameObject skilletInstance;
     public bool isOccupied = false;
-    private float timer = 0f;
+    private float timer;
     private Stack<GameObject> dishes = new Stack<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = 30f;
+        spawnMeal();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!isOccupied)
+        if (!isOccupied)
         {
-            spawnMeal();
+            timer -= Time.deltaTime;
+            if (timer < 0)
+            {
+                spawnMeal();
+                timer = 30f;
+            }
         }
     }
 
     void spawnMeal()
     {
         Vector3 unitAbove = this.transform.position + new Vector3(0, 0.5f, 0);
-        dishInstance = Instantiate(dish, unitAbove, Quaternion.identity);
-        if(this.name == "Curry")
+        skilletInstance = Instantiate(skillet, unitAbove, Quaternion.identity);
+        if (this.name == "Curry")
         {
-            dishInstance.GetComponent<Dish>().name = this.name;
+            skilletInstance.GetComponent<Skillet>().name = this.name;
         }
-        else if(this.name == "Steak")
+        else if (this.name == "Steak")
         {
-            dishInstance.GetComponent<Dish>().name = this.name;
+            skilletInstance.GetComponent<Skillet>().name = this.name;
         }
-        else if(this.name == "Soup")
+        else if (this.name == "Soup")
         {
-            dishInstance.GetComponent<Dish>().name = this.name;
+            skilletInstance.GetComponent<Skillet>().name = this.name;
         }
-        dishes.Push(dishInstance);
+        dishes.Push(skilletInstance);
         isOccupied = true;
-        timer = 0f;
     }
 
-    public GameObject getDish()
+    public GameObject getSkillet(Transform player)
     {
-        return dishes.Pop();
+        GameObject Skillet = dishes.Pop();
+        Skillet.GetComponent<Rigidbody>().detectCollisions = true;
+        Skillet.GetComponent<Rigidbody>().useGravity = false;
+        Skillet.GetComponent<Rigidbody>().isKinematic = true;
+        Skillet.transform.SetParent(player);
+        isOccupied = false;
+        return Skillet;
     }
 }

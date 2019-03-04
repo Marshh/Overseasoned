@@ -9,6 +9,9 @@ TagManager:
   - PrepStation
   - Undefined
   - MealStation
+  - Dish
+  - Spice
+  - Skillet
   layers:
   - Default
   - TransparentFX

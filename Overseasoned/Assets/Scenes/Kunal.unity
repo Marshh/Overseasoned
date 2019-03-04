@@ -568,7 +568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DishPrefab: {fileID: 2005669249862276357, guid: 327e920f67dc8f147b977daf553f9f05,
     type: 3}
-  dish: {fileID: 0}
+  item: {fileID: 0}
   Speed: 10
 --- !u!1001 &621994927
 PrefabInstance:
@@ -700,7 +700,7 @@ PrefabInstance:
     - target: {fileID: 3907858323436216100, guid: 3e924af7be38d406bb11f0d863102f22,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3907858323436216100, guid: 3e924af7be38d406bb11f0d863102f22,
         type: 3}
@@ -717,6 +717,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 817065780586142568, guid: 3e924af7be38d406bb11f0d863102f22,
+        type: 3}
+      propertyPath: dish
+      value: 
+      objectReference: {fileID: 2043214537666879529, guid: 24d869d7e94ca40fd9a218287649a60c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e924af7be38d406bb11f0d863102f22, type: 3}
 --- !u!1 &1776003731
@@ -823,7 +829,7 @@ PrefabInstance:
     - target: {fileID: 3907858323436216100, guid: 3e924af7be38d406bb11f0d863102f22,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3907858323436216100, guid: 3e924af7be38d406bb11f0d863102f22,
         type: 3}
@@ -840,6 +846,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 817065780586142568, guid: 3e924af7be38d406bb11f0d863102f22,
+        type: 3}
+      propertyPath: dish
+      value: 
+      objectReference: {fileID: 2043214537666879529, guid: 24d869d7e94ca40fd9a218287649a60c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e924af7be38d406bb11f0d863102f22, type: 3}
 --- !u!1001 &1913542129
@@ -989,5 +1001,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 817065780586142568, guid: 3e924af7be38d406bb11f0d863102f22,
+        type: 3}
+      propertyPath: dish
+      value: 
+      objectReference: {fileID: 2043214537666879529, guid: 24d869d7e94ca40fd9a218287649a60c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e924af7be38d406bb11f0d863102f22, type: 3}

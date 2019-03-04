@@ -86,6 +86,18 @@ public class Player : MonoBehaviour
                     hit.collider.gameObject.GetComponent<PrepStation>().PlaceDish(item);
                     item = null;
                 }
+                else if (item != null && item.CompareTag("Skillet") && hit.collider.gameObject.GetComponent<PrepStation>().isOccupied == true)
+                {
+                    hit.collider.gameObject.GetComponent<PrepStation>().AddIngredient(item.name);
+                    item.GetComponent<Skillet>().hasFood = false;
+                    Destroy(item);
+                }
+                else if (item != null && item.CompareTag("Spice") && hit.collider.gameObject.GetComponent<PrepStation>().isOccupied == true)
+                {
+                    int spiceLevel = item.gameObject.GetComponent<PickedUp>().spiceLevel;
+                    hit.collider.gameObject.GetComponent<PrepStation>().AddSpice(item.name, spiceLevel);
+                    Destroy(item);
+                }
                 else if (item == null)
                 {
                     item = hit.collider.gameObject.GetComponent<PrepStation>().PickUpDish(transform);
@@ -94,17 +106,13 @@ public class Player : MonoBehaviour
             }
             else if (hit.collider.CompareTag("MealStation"))
             {
-                item = hit.collider.gameObject.GetComponent<MealSpawners>().getDish();
-                item.GetComponent<Rigidbody>().detectCollisions = true;
-                item.GetComponent<Rigidbody>().useGravity = false;
-                item.GetComponent<Rigidbody>().isKinematic = true;
-                item.transform.SetParent(transform);
-                item.transform.localPosition = new Vector3(0, .25f, 1);
+                item = hit.collider.gameObject.GetComponent<MealSpawners>().getSkillet(transform);
+                item.transform.localPosition = -_itemLocalPosition;
             }
             else if (hit.collider.CompareTag("SpiceStation"))
             {
                 item = hit.collider.gameObject.GetComponent<SpiceStation>().getSpice(this.transform);
-                item.transform.localPosition = _itemLocalPosition;
+                item.transform.localPosition = -_itemLocalPosition;
             }
         }
     }

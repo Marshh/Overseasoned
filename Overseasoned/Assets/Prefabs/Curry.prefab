@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5395905975144801162}
   - component: {fileID: 3035337352083442995}
   m_Layer: 0
-  m_Name: Rice 1
+  m_Name: Curry
   m_TagString: Spice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
