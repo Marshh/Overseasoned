@@ -1,70 +1,158 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public Rigidbody playerRigidbody;
-
-    public GameObject pickedUpItem;
-
+    public GameObject DishPrefab;
+    public GameObject item;
     public float Speed;
 
-    private GameObject inHandGameObject;
+    private Vector3 _itemLocalPosition = new Vector3(0, .25f, 1);
+
+    int floorMask;
+
+    public Image LoadingBar;
+    public TextMeshProUGUI AlertText;
+
+    private float _alerttexttimer;
+
+
     // Start is called before the first frame update
     void Start()
     {
 
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
         {
-            checkObject();
+            LoadingBar.fillAmount = 0;
         }
-        
-
+        Interaction();
         Movement();
+        ClearAlertText();
     }
 
+
+  
     void Movement()
     {
-        float movementModifierZ = Input.GetAxisRaw("Vertical");
-        transform.Translate(new Vector3(0,0, movementModifierZ) * Speed * Time.deltaTime);
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 mousePos2 = Input.mousePosition;
+        Vector3 playerPos = Camera.main.WorldToScreenPoint(transform.position);
+
+        mousePos.z = Mathf.Abs(Camera.main.transform.position.y - transform.position.y);
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+        mousePos.y = transform.position.y;
+
+        transform.LookAt(mousePos, Vector3.up);
 
 
-        float movementModifierX = Input.GetAxisRaw("Horizontal");
-        transform.Rotate(new Vector3(0, movementModifierX *25 * Speed * Time.deltaTime, 0));
-        
+
+        if ((Mathf.Abs(playerPos.x - mousePos2.x) > 20) || (Mathf.Abs(playerPos.y - mousePos2.y) > 60))
+        {
+            //Debug.Log("IS MY CONDITIONAL A JOKE TO YOU, C SHARP");
+            float movementModifierZ = Input.GetAxisRaw("Vertical");
+            transform.Translate(new Vector3(0, 0, movementModifierZ) * Speed * Time.deltaTime);
+        }
+
 
     }
 
-    void checkObject()
+
+    void Interaction()
     {
 
-        // Vector3 fwd = transform.TransformDirection(Vector3.forward);
-        // Vector3 rayCastPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-        // Debug.DrawRay(transform.position, fwd, Color.green);
-        // bool raycasthit = Physics.Raycast(rayCastPos, fwd, 50);
-
-
-              Vector3 rayCastPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-         
-        //       Ray ray = new Ray(transform.position+new Vector3(0,.25f,0), fwd);
         Vector3 fwd = transform.TransformDirection(new Vector3(0, 0, 5));
-        Debug.DrawRay(transform.position + new Vector3(0, .5f, 0), fwd, Color.green);
-        //The sphere can't spawn on the item collider. It won't detect it.
-        float thickness = .30f;
-        if(Physics.SphereCast(transform.position+ new Vector3(0, .5f, 0), thickness, fwd, out RaycastHit hit,2f))
+        //Debug.DrawRay(transform.position + new Vector3(0, .5f, 0), fwd, Color.green);
+        Debug.DrawRay(transform.position + new Vector3(0, -.25f, 0), fwd);
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position + new Vector3(0, -.25f, 0), fwd, out hit, 2f))
         {
-            if (hit.collider.CompareTag("Salt"))
+            if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("DishStation"))
             {
-                Debug.Log("Salty");
-                hit.collider.gameObject.SendMessage("OnPickup", hit.collider);
+                //Pick up plate
+                item = hit.collider.gameObject.GetComponent<DishStation>().getDish(transform);
+                item.transform.localPosition = _itemLocalPosition;
+
             }
-//            Debug.Log(hit.distance);
+            else if (hit.collider.CompareTag("PrepStation"))
+            {
+                //Place plate
+                if (Input.GetKeyDown(KeyCode.E) && item != null && item.CompareTag("Dish"))
+                {
+                    hit.collider.gameObject.GetComponent<PrepStation>().PlaceDish(item);
+                    item = null;
+                }
+                else if (item != null && item.CompareTag("Spice") && Input.GetKey(KeyCode.E))
+                {
+                    if (LoadingBar.fillAmount < 1.0f)
+                    {
+                        LoadingBar.fillAmount += 0.025f;
+                    }
+
+                    else if (LoadingBar.fillAmount >= 1.0f)
+                    {
+                        LoadingBar.fillAmount = 0;
+                        hit.collider.gameObject.GetComponent<PrepStation>().AddIngredient(item.name);
+                        Destroy(item);
+                        DisplayAlertText($"Added {item.name}");
+                    }
+
+                }
+                else if (Input.GetKeyDown(KeyCode.E) && item == null)
+                {
+                    item = hit.collider.gameObject.GetComponent<PrepStation>().PickUpDish(transform);
+                    item.transform.localPosition = _itemLocalPosition;
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("SpiceStation"))
+            {
+                item = hit.collider.gameObject.GetComponent<SpiceStation>().getSpice(this.transform);
+                item.transform.localPosition = _itemLocalPosition;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("MealStation"))
+            {
+                item = hit.collider.gameObject.GetComponent<MealSpawners>().getDish();
+                item.GetComponent<Rigidbody>().detectCollisions = true;
+                item.GetComponent<Rigidbody>().useGravity = false;
+                item.GetComponent<Rigidbody>().isKinematic = true;
+                item.transform.SetParent(transform);
+                item.transform.localPosition = new Vector3(0, .25f, 1);
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Trash"))
+            {
+                hit.collider.gameObject.GetComponent<Trash>().deleteDish(item);
+            }
         }
     }
+
+
+    void DisplayAlertText(string message)
+    {
+        
+        _alerttexttimer = 4f;
+        AlertText.text = message;
+
+    }
+
+    void ClearAlertText()
+    {
+
+        if (_alerttexttimer <= 0)
+        {
+            AlertText.text = "";
+        }else if (AlertText.text != "")
+        {
+            _alerttexttimer -= Time.deltaTime;
+        }
+    }
+  
 }

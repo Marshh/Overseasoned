@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 1874516540}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Salt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -565,7 +565,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874516535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.17, y: 2.17, z: -1.52}
+  m_LocalPosition: {x: 0.69, y: 2.17, z: 2.89}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
@@ -594,11 +594,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8537148152645365212, guid: 13d82c6714bb7ce46934e1e1af17ca7b,
-        type: 3}
-      propertyPath: m_Name
-      value: SaltStation
-      objectReference: {fileID: 0}
     - target: {fileID: 8537148152645365184, guid: 13d82c6714bb7ce46934e1e1af17ca7b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -653,6 +648,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537148152645365212, guid: 13d82c6714bb7ce46934e1e1af17ca7b,
+        type: 3}
+      propertyPath: m_Name
+      value: SaltStation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13d82c6714bb7ce46934e1e1af17ca7b, type: 3}
