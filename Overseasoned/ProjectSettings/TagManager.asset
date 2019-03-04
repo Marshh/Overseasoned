@@ -4,12 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Station
-  - Salt
-  - Customer
-  - Spice
-  - Dish
+  - SpiceStation
+  - DishStation
   - PrepStation
+  - Undefined
   - MealStation
   layers:
   - Default
@@ -20,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - Dish Layer
+  - 
   - 
   - 
   - 

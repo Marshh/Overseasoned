@@ -9,13 +9,13 @@ public class PrepStation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void AddIngredient(string Ingredient)
@@ -27,6 +27,21 @@ public class PrepStation : MonoBehaviour
     {
         dish = Dish;
         dish.transform.SetParent(transform);
-        dish.transform.localPosition = new Vector3(0, 0.5f+ dish.GetComponent<Renderer>().bounds.size.y/2, 0);
+        dish.transform.localPosition = new Vector3(0, 0.5f + dish.GetComponent<Renderer>().bounds.size.y / 2, 0);
     }
+
+    public GameObject PickUpDish(Transform player)
+    {
+
+
+
+        dish.transform.SetParent(player);
+        GameObject item = dish;
+        dish = null;
+
+        return item;
+
+
+    }
+
 }

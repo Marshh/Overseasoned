@@ -5,18 +5,19 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject DishPrefab;
-    public GameObject dish;
+    public GameObject item;
     public float Speed;
+
+    private Vector3 _itemLocalPosition = new Vector3(0, .25f, 1);
 
     int floorMask;
 
-    
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
-        //        IniDish();
-       
+
     }
 
     void Update()
@@ -24,15 +25,15 @@ public class Player : MonoBehaviour
         Movement();
     }
 
-   
+
     void FixedUpdate()
     {
-        
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             checkObject();
         }
-        
+
 
     }
 
@@ -49,91 +50,64 @@ public class Player : MonoBehaviour
 
         transform.LookAt(mousePos, Vector3.up);
 
-        
 
-        if ( ( Mathf.Abs( playerPos.x - mousePos2.x ) > 20 ) || (Mathf.Abs(playerPos.y - mousePos2.y) > 60))
+
+        if ((Mathf.Abs(playerPos.x - mousePos2.x) > 20) || (Mathf.Abs(playerPos.y - mousePos2.y) > 60))
         {
             //Debug.Log("IS MY CONDITIONAL A JOKE TO YOU, C SHARP");
             float movementModifierZ = Input.GetAxisRaw("Vertical");
             transform.Translate(new Vector3(0, 0, movementModifierZ) * Speed * Time.deltaTime);
         }
-        
+
     }
 
     void checkObject()
     {
 
-       
-
-        //Ignore dish infront of player
-        int layerMask = 1 << 8;
-        layerMask = ~layerMask;
-
         Vector3 fwd = transform.TransformDirection(new Vector3(0, 0, 5));
         //Debug.DrawRay(transform.position + new Vector3(0, .5f, 0), fwd, Color.green);
-        Debug.DrawRay(transform.position + new Vector3(0, -.25f, 0),fwd);
-        //The sphere can't spawn on the item collider. It won't detect it.
-        float thickness = .30f;
+        Debug.DrawRay(transform.position + new Vector3(0, -.25f, 0), fwd);
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position+ new Vector3(0, .5f, 0), thickness, fwd, out hit,2f,layerMask))
-        {
-            if (hit.collider.CompareTag("Spice"))
-            {
-                //                Debug.Logwwssd("Salty");
-                //                hit.collider.gameObject.SendMessage("OnPickup", hit.collider);
-                print(hit.collider.gameObject.name);
-                dish.GetComponent<Dish>().addIngredient(hit.collider.gameObject.name);
-                Destroy(hit.collider.gameObject);
-            }
-            else 
-            //            Debug.Log(hit.distance);
-            print(hit.distance);
-        }
 
         if (Physics.Raycast(transform.position + new Vector3(0, -.25f, 0), fwd, out hit, 2f))
         {
-            if (hit.collider.CompareTag("Station"))
+            if (hit.collider.CompareTag("DishStation"))
             {
                 //Pick up plate
-                dish = hit.collider.gameObject.GetComponent<DishStation>().getDish();
-                dish.GetComponent<Rigidbody>().detectCollisions = true;
-                dish.GetComponent<Rigidbody>().useGravity = false;
-                dish.GetComponent<Rigidbody>().isKinematic = true;
-                dish.transform.SetParent(transform);
-                dish.transform.localPosition = new Vector3(0, .25f, 1);
-                
+                item = hit.collider.gameObject.GetComponent<DishStation>().getDish(transform);
+                item.transform.localPosition = _itemLocalPosition;
+
             }
             else if (hit.collider.CompareTag("PrepStation"))
             {
                 //Place plate
-                if (dish != null)
+                if (item != null && item.CompareTag("Dish"))
                 {
-                    hit.collider.gameObject.GetComponent<PrepStation>().PlaceDish(dish);
-                    dish = null;
+                    hit.collider.gameObject.GetComponent<PrepStation>().PlaceDish(item);
+                    item = null;
                 }
-                else
+                else if (item == null)
                 {
-                    dish=hit.collider.gameObject.GetComponent<PrepStation>().dish;
-                    hit.collider.gameObject.GetComponent<PrepStation>().dish = null;
-                    dish.transform.SetParent(transform);
-                    dish.transform.localPosition = new Vector3(0, .25f, 1);
+                    item = hit.collider.gameObject.GetComponent<PrepStation>().PickUpDish(transform);
+                    item.transform.localPosition = _itemLocalPosition;
                 }
             }
             else if (hit.collider.CompareTag("MealStation"))
             {
-                dish = hit.collider.gameObject.GetComponent<MealSpawners>().getDish();
-                dish.GetComponent<Rigidbody>().detectCollisions = true;
-                dish.GetComponent<Rigidbody>().useGravity = false;
-                dish.GetComponent<Rigidbody>().isKinematic = true;
-                dish.transform.SetParent(transform);
-                dish.transform.localPosition = new Vector3(0, .25f, 1);
+                item = hit.collider.gameObject.GetComponent<MealSpawners>().getDish();
+                item.GetComponent<Rigidbody>().detectCollisions = true;
+                item.GetComponent<Rigidbody>().useGravity = false;
+                item.GetComponent<Rigidbody>().isKinematic = true;
+                item.transform.SetParent(transform);
+                item.transform.localPosition = new Vector3(0, .25f, 1);
+            }
+            else if (hit.collider.CompareTag("SpiceStation"))
+            {
+                item = hit.collider.gameObject.GetComponent<SpiceStation>().getSpice(this.transform);
+                item.transform.localPosition = _itemLocalPosition;
             }
         }
     }
 
-    void IniDish()
-    {
-        dish = Instantiate(DishPrefab, transform);
-        dish.transform.localPosition = new Vector3(0, 0, 1);
-    }
+  
 }
