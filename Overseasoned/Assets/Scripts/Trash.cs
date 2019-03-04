@@ -8,7 +8,7 @@ public class Trash : MonoBehaviour
     {
         foreach (Transform child in player.transform)
         {
-            if (!(child.name == "ScaleReset"))
+            if (!(child.name == "ScaleReset") && !(child.name == "Dish"))
             {
                 Destroy(child.gameObject);
             }
