@@ -179,18 +179,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fb2d0f540a3dea41ba42866804444a9, type: 3}
---- !u!114 &80186775 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
-    type: 3}
-  m_PrefabInstance: {fileID: 2042849310}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &84948624
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +380,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: 'Spice
-
         Station'
       objectReference: {fileID: 0}
     - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
@@ -1557,13 +1544,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558215102}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bda586dbcc05a744915a03680dd3b97, type: 3}
+  m_Script: {fileID: 11500000, guid: 7409690b8413e480295849c5905f1b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  Tables: {fileID: 1706337138}
+  customer: {fileID: 1645855621443347941, guid: e5afcab9c284c41559958a8949d01ace,
+    type: 3}
+  numberOfCustomers: 0
 --- !u!1 &1610010383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,121 +1910,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 098f6aee5a2d4c247bcf0583b5fc776b, type: 3}
-<<<<<<< HEAD
---- !u!1001 &2042849310
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 769952593, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_Name
-      value: SpiceStation (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952598, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.9886265
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952598, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952598, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952598, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952598, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952598, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952598, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952598, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952598, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952598, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952598, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 769952594, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: Spice
-      value: 
-      objectReference: {fileID: 8746703108856529803, guid: 88a4a9c62c379514e8f69f7783d077d1,
-        type: 3}
-    - target: {fileID: 769952594, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-      propertyPath: TipText
-      value: 
-      objectReference: {fileID: 80186775}
-    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
-        type: 3}
-      propertyPath: m_text
-      value: 'Spice
-
-        Station'
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 37.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788997467201856190, guid: 1f1627b5c956e7245a5d1b09f69939ca,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1f1627b5c956e7245a5d1b09f69939ca, type: 3}
-=======
 --- !u!1 &1902697828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,7 +2014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b0fd8ee5003b34ab6ec3aa957ff293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> 4e6ae70b4e510529ee763176a409e6031086f4b9
 --- !u!1 &2142334084
 GameObject:
   m_ObjectHideFlags: 0
