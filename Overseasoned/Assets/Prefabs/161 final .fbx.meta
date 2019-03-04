@@ -4,57 +4,39 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pCube1
-    100004: pCube2
-    100006: pCube3
-    100008: pCylinder1
-    100010: pCylinder2
-    100012: pCylinder3
-    100014: pCylinder4
-    100016: pCylinder5
-    100018: pPlane1
-    100020: pPlane2
-    100022: pPlane3
-    100024: pPlane4
-    100026: pPlane5
-    100028: pSphere1
-    100030: pSphere2
-    100032: pSphere3
-    100034: pTorus1
-    100036: pTorus2
-    100038: pTorus3
-    100040: transform1
-    100042: transform2
-    100044: transform3
-    100046: transform4
-    100048: transform5
-    100050: typeMesh1
+    100002: pCube3
+    100004: pCylinder1
+    100006: pCylinder3
+    100008: pCylinder4
+    100010: pCylinder5
+    100012: pPlane2
+    100014: pPlane3
+    100016: pPlane4
+    100018: pPlane5
+    100020: pSphere1
+    100022: pSphere2
+    100024: pSphere3
+    100026: pTorus1
+    100028: pTorus2
+    100030: pTorus3
+    100032: transform5
     400000: //RootNode
-    400002: pCube1
-    400004: pCube2
-    400006: pCube3
-    400008: pCylinder1
-    400010: pCylinder2
-    400012: pCylinder3
-    400014: pCylinder4
-    400016: pCylinder5
-    400018: pPlane1
-    400020: pPlane2
-    400022: pPlane3
-    400024: pPlane4
-    400026: pPlane5
-    400028: pSphere1
-    400030: pSphere2
-    400032: pSphere3
-    400034: pTorus1
-    400036: pTorus2
-    400038: pTorus3
-    400040: transform1
-    400042: transform2
-    400044: transform3
-    400046: transform4
-    400048: transform5
-    400050: typeMesh1
+    400002: pCube3
+    400004: pCylinder1
+    400006: pCylinder3
+    400008: pCylinder4
+    400010: pCylinder5
+    400012: pPlane2
+    400014: pPlane3
+    400016: pPlane4
+    400018: pPlane5
+    400020: pSphere1
+    400022: pSphere2
+    400024: pSphere3
+    400026: pTorus1
+    400028: pTorus2
+    400030: pTorus3
+    400032: transform5
     2100000: blinn2
     2100002: lambert4
     2100004: lambert1
@@ -77,7 +59,6 @@ ModelImporter:
     2300024: pTorus1
     2300026: pTorus2
     2300028: pTorus3
-    2300030: typeMesh1
     3300000: pCube3
     3300002: pCylinder1
     3300004: pCylinder3
@@ -93,7 +74,6 @@ ModelImporter:
     3300024: pTorus1
     3300026: pTorus2
     3300028: pTorus3
-    3300030: typeMesh1
     4300000: pCylinder1
     4300002: pTorus1
     4300004: pTorus2
@@ -109,16 +89,7 @@ ModelImporter:
     4300024: pPlane4
     4300026: pSphere3
     4300028: pPlane5
-    4300030: typeMesh1
-    7400000: Take 001
-    9500000: //RootNode
-    2186277476908879412: ImportLogs
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: table_numbers
-    second: {fileID: 2800000, guid: 37d6bbcd693ced448b8119260874eb29, type: 3}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -170,8 +141,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -198,7 +169,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
