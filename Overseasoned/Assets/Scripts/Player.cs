@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(transform.position + new Vector3(0, -.50f, 0), fwd, out hit, 2f))
         {
-            if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("DishStation"))
+            if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("DishStation") && item == null)
             {
                 //Pick up plate
                 item = hit.collider.gameObject.GetComponent<DishStation>().getDish(transform);
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
                     item.transform.localPosition = _itemLocalPosition;
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("SpiceStation"))
+            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("SpiceStation") && item == null)
             {
                 item = hit.collider.gameObject.GetComponent<SpiceStation>().getSpice(this.transform);
                 item.transform.localPosition = _itemLocalPosition;
@@ -130,6 +130,7 @@ public class Player : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Trash"))
             {
                 hit.collider.gameObject.GetComponent<Trash>().deleteDish(item);
+
             }
         }
     }
