@@ -6,7 +6,13 @@ public class Trash : MonoBehaviour
 {
     public void deleteDish(GameObject item)
     {
-        
-        item.GetComponent<Dish>().clear();
+        if (item.name == "Dish")
+        {
+            item.GetComponent<Dish>().clear();
+        }
+        else
+        {
+            Destroy(item);
+        }
     }
 }
