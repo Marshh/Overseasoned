@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
                 item.transform.localPosition = _itemLocalPosition;
             }
 
-            else if (hit.collider.CompareTag("MealStation"))
+            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("MealStation"))
             {
                 item = hit.collider.gameObject.GetComponent<MealSpawners>().getDish();
                 item.GetComponent<Rigidbody>().detectCollisions = true;
