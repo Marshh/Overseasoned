@@ -129,8 +129,7 @@ public class Player : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Trash"))
             {
-                hit.collider.gameObject.GetComponent<Trash>().deleteDish(this.transform);
-                item = null;
+                hit.collider.gameObject.GetComponent<Trash>().deleteDish(item);
             }
         }
     }
