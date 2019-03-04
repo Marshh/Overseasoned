@@ -38,14 +38,18 @@ public class Table : MonoBehaviour
 
         if (Physics.SphereCast(transform.position-new Vector3(0,2,0), radius, direction, out RaycastHit hit, Mathf.Infinity,layerMask))
         {
-            if (hit.collider.CompareTag("Dish") && Input.GetKeyDown(KeyCode.E) && dish==null)
+            if (hit.collider.CompareTag("Dish") && Input.GetKeyDown(KeyCode.E) && dish == null)
             {
-                print("success");
                 dish = hit.collider.gameObject;
-                hit.collider.gameObject.transform.parent.gameObject.GetComponent<Player>().dish=null;
+                hit.collider.gameObject.transform.parent.gameObject.GetComponent<Player>().dish = null;
                 dish.transform.SetParent(transform);
                 dish.transform.localPosition = new Vector3(-1, dish.GetComponent<Renderer>().bounds.size.y, 0);
                 dish.GetComponent<Rigidbody>().detectCollisions = false;
+                if (hit.collider.gameObject.name == customer.GetComponent<Customer>().food)
+                {
+                    //customer.GetComponent<Customer>().spiceLevel == hit.collider.gameObject.GetComponent<Dish>().Spiciness
+                    print("success");
+                }
             }
         }
     }
