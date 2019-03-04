@@ -13,6 +13,8 @@ TagManager:
   - Customer
   - Spice
   - Trash
+  - Salt
+  - Station
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Dish
   - 
   - 
   - 

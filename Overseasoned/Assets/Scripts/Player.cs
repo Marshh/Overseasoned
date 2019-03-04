@@ -70,10 +70,10 @@ public class Player : MonoBehaviour
 
         Vector3 fwd = transform.TransformDirection(new Vector3(0, 0, 5));
         //Debug.DrawRay(transform.position + new Vector3(0, .5f, 0), fwd, Color.green);
-        Debug.DrawRay(transform.position + new Vector3(0, -.25f, 0), fwd);
+        Debug.DrawRay(transform.position + new Vector3(0, -.50f, 0), fwd);
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position + new Vector3(0, -.25f, 0), fwd, out hit, 2f))
+        if (Physics.Raycast(transform.position + new Vector3(0, -.50f, 0), fwd, out hit, 2f))
         {
             if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("DishStation"))
             {
