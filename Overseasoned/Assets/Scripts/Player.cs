@@ -38,17 +38,7 @@ public class Player : MonoBehaviour
     }
 
 
-    void FixedUpdate()
-    {
-
- 
-
- 
-
-
-
-    }
-
+  
     void Movement()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -140,6 +130,7 @@ public class Player : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Trash"))
             {
                 hit.collider.gameObject.GetComponent<Trash>().deleteDish(this.transform);
+
             }
         }
     }

@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
-    public void deleteDish(Transform player)
+    public void deleteDish(GameObject item)
     {
-        foreach (Transform child in player.transform)
-        {
-            if (!(child.name == "ScaleReset") && !(child.name == "Dish"))
-            {
-                Destroy(child.gameObject);
-            }
-        }
+        
+        item.GetComponent<Dish>().clear();
     }
 }
