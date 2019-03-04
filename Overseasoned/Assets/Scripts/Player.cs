@@ -127,6 +127,16 @@ public class Player : MonoBehaviour
                 item = hit.collider.gameObject.GetComponent<SpiceStation>().getSpice(this.transform);
                 item.transform.localPosition = _itemLocalPosition;
             }
+
+            else if (hit.collider.CompareTag("MealStation"))
+            {
+                item = hit.collider.gameObject.GetComponent<MealSpawners>().getDish();
+                item.GetComponent<Rigidbody>().detectCollisions = true;
+                item.GetComponent<Rigidbody>().useGravity = false;
+                item.GetComponent<Rigidbody>().isKinematic = true;
+                item.transform.SetParent(transform);
+                item.transform.localPosition = new Vector3(0, .25f, 1);
+            }
         }
     }
 

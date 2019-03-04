@@ -6,7 +6,7 @@ using UnityEngine;
 public class Dish : MonoBehaviour
 {
     public int Spiciness;
-//    public bool hasAll = false;
+//  public bool hasAll = false;
     public List<string> ingredients;
     // Start is called before the first frame update
     void awake()

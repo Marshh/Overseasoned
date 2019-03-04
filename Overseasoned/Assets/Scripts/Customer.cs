@@ -8,14 +8,16 @@ public class Customer : MonoBehaviour
     public float timer;
     public bool completed;
     public static Customer instance;
+    public string food;
+    public int spiceLevel;
 
     public GameObject DishStation;
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
-
         completed = false;
+        spiceLevel = Random.Range(0, 6);
     }
 
     // Update is called once per frame
@@ -24,8 +26,6 @@ public class Customer : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            
-            
             if(completed) RespawnDish();
 
             CustomerLeft();
@@ -37,7 +37,6 @@ public class Customer : MonoBehaviour
     {
         SpawnCustomer.instance.numberOfCustomers -= 1;
         Destroy(this.gameObject);
-
     }
 
     void RespawnDish()
