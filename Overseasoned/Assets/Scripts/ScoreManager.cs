@@ -38,7 +38,7 @@ public class ScoreManager : MonoBehaviour
 
     void IncreaseScore(float add)
     {
-//        score += add;
+        score += add;
         print($"ADDED SCORE: {add}");
 
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MealSpawners : MonoBehaviour
@@ -9,10 +10,12 @@ public class MealSpawners : MonoBehaviour
     public bool isOccupied = false;
     private float timer;
     private Stack<GameObject> dishes = new Stack<GameObject>();
+    public TextMeshProUGUI TipText;
 
     // Start is called before the first frame update
     void Start()
     {
+        TipText.text = $"{gameObject.name} Station";
         timer = 30f;
         spawnMeal();
     }
