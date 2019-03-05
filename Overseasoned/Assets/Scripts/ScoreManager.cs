@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,7 +13,12 @@ public class ScoreManager : MonoBehaviour
 
     public GameObject Tables;
 
+    public float time;
+
+    public TextMeshProUGUI ScoreText;
+
     public static ScoreManager instance;
+
     void Awake()
     {
         instance = this;
@@ -33,13 +39,21 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        time -= Time.deltaTime;
+        if (time < 0)
+        {
+            
+            
+        }
+        int min = Mathf.FloorToInt(time / 60);
+        int sec = Mathf.FloorToInt(time % 60);
+        ScoreText.text = $"Time: {min}:{sec:D2}\nScore: {Mathf.FloorToInt(score)}";
     }
 
     void IncreaseScore(float add)
     {
         score += add;
-        print($"ADDED SCORE: {add}");
+        print(score);
 
     }
 }

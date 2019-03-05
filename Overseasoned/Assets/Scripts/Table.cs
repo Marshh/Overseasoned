@@ -69,7 +69,7 @@ public class Table : MonoBehaviour
     {
         float multiplier = customer.GetComponent<Customer>().totaltime/ (customer.GetComponent<Customer>().totaltime-customer.GetComponent<Customer>().timeleft);
         int spiceDifference = Mathf.Abs(dish.GetComponent<Dish>().Spiciness - customer.GetComponent<Customer>().spiceLevel);
-        int baseScore = -200;
+        int baseScore = 0;
 
         foreach (var food in dish.GetComponent<Dish>().ingredients)
         {

@@ -39,6 +39,10 @@ public class Customer : MonoBehaviour
 
     void CustomerLeft()
     {
+        if (transform.parent.GetComponent<Table>().dish == null)
+        {
+            transform.parent.GetComponent<Table>().OnScoreEvent.Invoke(-1000);
+        }
         this.transform.parent.GetComponent<Table>().OrderText.text = "No Customer";
         SpawnCustomer.instance.numberOfCustomers -= 1;
         Destroy(this.gameObject);
