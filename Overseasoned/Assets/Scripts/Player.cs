@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
             else if (hit.collider.CompareTag("PrepStation"))
             {
                 //Place plate
-                if (Input.GetKeyDown(KeyCode.E) && item != null && item.CompareTag("Dish"))
+                if (Input.GetKeyDown(KeyCode.E) && item != null && item.CompareTag("Dish") && hit.collider.gameObject.GetComponent<PrepStation>().isOccupied == false)
                 {
                     hit.collider.gameObject.GetComponent<PrepStation>().PlaceDish(item);
                     item = null;
