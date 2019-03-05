@@ -7,6 +7,15 @@ TagManager:
   - Skillet
   - Spice
   - MealStation
+  - Customer
+  - Trash
+  - Dish
+  - DishStation
+  - SpiceStation
+  - PrepStation
+  - Station
+  - Salt
+  - Table
   layers:
   - Default
   - TransparentFX
@@ -16,7 +25,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Dish
   - 
   - 
   - 

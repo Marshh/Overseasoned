@@ -28,6 +28,13 @@ public class SpawnCustomer : MonoBehaviour
     {
         childList = GetComponentsInChildren<Transform>().ToList();
         childList.RemoveAt(0);
+        for (int i=0; i <childList.Count; i++)
+        {
+            if (!childList[i].CompareTag("Table"))
+            {
+                childList.RemoveAt(i);
+            }
+        }
         SpawnCustomers();
     }
     // Update is called once per frame
