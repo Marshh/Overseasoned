@@ -33,8 +33,13 @@ public class Player : MonoBehaviour
             LoadingBar.fillAmount = 0;
         }
         Interaction();
-        Movement();
+        
         ClearAlertText();
+    }
+
+    void FixedUpdate()
+    {
+        Movement();
     }
 
 
@@ -58,7 +63,11 @@ public class Player : MonoBehaviour
         {
             //Debug.Log("IS MY CONDITIONAL A JOKE TO YOU, C SHARP");
             float movementModifierZ = Input.GetAxisRaw("Vertical");
-            transform.Translate(new Vector3(0, 0, movementModifierZ) * Speed * Time.deltaTime);
+            //            transform.Translate();
+            //transform.Translate(new Vector3(0, 0, movementModifierZ) * Speed * Time.deltaTime);
+            Vector3 movement = transform.TransformDirection(new Vector3(0, 0, movementModifierZ) * Speed * Time.deltaTime);
+            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position+ movement);
+
         }
 
 
