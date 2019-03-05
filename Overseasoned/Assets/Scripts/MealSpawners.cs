@@ -16,7 +16,7 @@ public class MealSpawners : MonoBehaviour
     void Start()
     {
         TipText.text = $"{gameObject.name} Station";
-        timer = 30f;
+        timer = 10f;
         spawnMeal();
     }
 

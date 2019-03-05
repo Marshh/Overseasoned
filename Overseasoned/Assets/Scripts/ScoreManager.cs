@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 
 public class ScoreManager : MonoBehaviour
@@ -22,6 +23,7 @@ public class ScoreManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(transform.gameObject);
     }
     // Start is called before the first frame update
     void Start()
@@ -42,8 +44,8 @@ public class ScoreManager : MonoBehaviour
         time -= Time.deltaTime;
         if (time < 0)
         {
-            
-            
+            SceneManager.LoadScene("EndMenu");
+
         }
         int min = Mathf.FloorToInt(time / 60);
         int sec = Mathf.FloorToInt(time % 60);
