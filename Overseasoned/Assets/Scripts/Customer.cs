@@ -5,11 +5,12 @@ using UnityEngine;
 public class Customer : MonoBehaviour
 {
     //public GameObject dish;
-    public float timer;
+    public float totaltime;
     public bool completed;
     public static Customer instance;
     public string food;
     public int spiceLevel;
+    public float timeleft;
 
     public GameObject DishStation;
     // Start is called before the first frame update
@@ -18,17 +19,20 @@ public class Customer : MonoBehaviour
         instance = this;
         completed = false;
         spiceLevel = Random.Range(0, 17);
+        timeleft = totaltime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer < 0)
+        timeleft -= Time.deltaTime;
+        if (timeleft < 0)
         {
-            if(completed) RespawnDish();
+            //if(completed) RespawnDish();
+            RespawnDish();
 
             CustomerLeft();
+            timeleft = totaltime;
         }
         //CheckDish();
     }

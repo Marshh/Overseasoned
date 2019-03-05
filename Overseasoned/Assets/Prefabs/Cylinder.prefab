@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 16453751054547903}
   - component: {fileID: 6108041785678303606}
   - component: {fileID: 187786403446029074}
-  - component: {fileID: 142465770521085468}
+  - component: {fileID: 1093503528768188079}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Skillet
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasFood: 0
---- !u!54 &142465770521085468
+--- !u!54 &1093503528768188079
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -104,8 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1520f26c3a8e749a8b24c45968bcf0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 30
+  totaltime: 30
   completed: 0
   food: 
   spiceLevel: 0
+  timeleft: 0
   DishStation: {fileID: 0}

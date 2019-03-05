@@ -150,6 +150,7 @@ public class Player : MonoBehaviour
             {
                 item = hit.collider.gameObject.GetComponent<MealSpawners>().getSkillet(transform);
                 item.transform.localPosition = _itemLocalPosition;
+                item.GetComponent<MeshCollider>().isTrigger = true;
             }
             else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Trash") && item != null)
             {

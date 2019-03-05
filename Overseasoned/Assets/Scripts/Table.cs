@@ -48,7 +48,7 @@ public class Table : MonoBehaviour
 
         if (Physics.SphereCast(transform.position-new Vector3(0,2,0), radius, direction, out RaycastHit hit, Mathf.Infinity,layerMask))
         {
-            if (hit.collider.CompareTag("Dish") && Input.GetKeyDown(KeyCode.E) && dish == null)
+            if (hit.collider.CompareTag("Dish") && Input.GetKeyDown(KeyCode.E) && dish == null && customer!=null)
             {
                 dish = hit.collider.gameObject;
                 hit.collider.gameObject.transform.parent.gameObject.GetComponent<Player>().item=null;
@@ -67,18 +67,19 @@ public class Table : MonoBehaviour
 
     void ComputeScore(GameObject dish)
     {
-        int multiplier = Mathf.RoundToInt(customer.GetComponent<Customer>().timer) % 20;
+        float multiplier = customer.GetComponent<Customer>().totaltime/ (customer.GetComponent<Customer>().totaltime-customer.GetComponent<Customer>().timeleft);
         int spiceDifference = Mathf.Abs(dish.GetComponent<Dish>().Spiciness - customer.GetComponent<Customer>().spiceLevel);
-        int baseScore = 0;
+        int baseScore = -200;
 
         foreach (var food in dish.GetComponent<Dish>().ingredients)
         {
             if (food =="Steak" || food=="Curry" || food == "Soup")
             {
-                baseScore += (food == customer.GetComponent<Customer>().food) ? 100 : -200;
+                baseScore = (food == customer.GetComponent<Customer>().food) ? 100 : -200;
                 break;
             }
         }
+        
 
         float totalScore = baseScore * multiplier - spiceDifference;
         OnScoreEvent.Invoke(totalScore);
