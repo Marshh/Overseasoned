@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -59,9 +60,27 @@ public class Table : MonoBehaviour
 //                    //customer.GetComponent<Customer>().spiceLevel == hit.collider.gameObject.GetComponent<Dish>().Spiciness
 //                    print("success");
 //                }
-                OnScoreEvent.Invoke(10);
-
+                ComputeScore(dish);
             }
         }
+    }
+
+    void ComputeScore(GameObject dish)
+    {
+        int multiplier = Mathf.RoundToInt(customer.GetComponent<Customer>().timer) % 20;
+        int spiceDifference = Mathf.Abs(dish.GetComponent<Dish>().Spiciness - customer.GetComponent<Customer>().spiceLevel);
+        int baseScore = 0;
+
+        foreach (var food in dish.GetComponent<Dish>().ingredients)
+        {
+            if (food =="Steak" || food=="Curry" || food == "Soup")
+            {
+                baseScore += (food == customer.GetComponent<Customer>().food) ? 100 : -200;
+                break;
+            }
+        }
+
+        float totalScore = baseScore * multiplier - spiceDifference;
+        OnScoreEvent.Invoke(totalScore);
     }
 }
