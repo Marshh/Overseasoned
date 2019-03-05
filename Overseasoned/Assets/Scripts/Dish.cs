@@ -42,6 +42,11 @@ public class Dish : MonoBehaviour
         return Spiciness;
     }
 
+    public void clearSpiciness()
+    {
+        Spiciness = 0;
+    }
+
     public void clear()
     {
 //        hasAll = false;

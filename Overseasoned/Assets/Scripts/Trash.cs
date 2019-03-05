@@ -9,6 +9,7 @@ public class Trash : MonoBehaviour
         if (item.name == "Dish")
         {
             item.GetComponent<Dish>().clear();
+            item.GetComponent<Dish>().clearSpiciness();
         }
         else
         {
