@@ -17,7 +17,7 @@ public class Customer : MonoBehaviour
     {
         instance = this;
         completed = false;
-        spiceLevel = Random.Range(0, 6);
+        spiceLevel = Random.Range(0, 17);
     }
 
     // Update is called once per frame
@@ -35,6 +35,7 @@ public class Customer : MonoBehaviour
 
     void CustomerLeft()
     {
+        this.transform.parent.GetComponent<Table>().OrderText.text = "No Customer";
         SpawnCustomer.instance.numberOfCustomers -= 1;
         Destroy(this.gameObject);
     }

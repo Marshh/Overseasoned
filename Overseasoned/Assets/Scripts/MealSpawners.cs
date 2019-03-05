@@ -35,18 +35,7 @@ public class MealSpawners : MonoBehaviour
     {
         Vector3 unitAbove = this.transform.position + new Vector3(0, 0.5f, 0);
         skilletInstance = Instantiate(skillet, unitAbove, Quaternion.identity);
-        if (this.name == "Curry")
-        {
-            skilletInstance.GetComponent<Skillet>().name = this.name;
-        }
-        else if (this.name == "Steak")
-        {
-            skilletInstance.GetComponent<Skillet>().name = this.name;
-        }
-        else if (this.name == "Soup")
-        {
-            skilletInstance.GetComponent<Skillet>().name = this.name;
-        }
+        skilletInstance.GetComponent<Skillet>().name = this.name;
         dishes.Push(skilletInstance);
         isOccupied = true;
     }

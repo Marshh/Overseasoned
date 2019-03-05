@@ -106,4 +106,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 30
   completed: 0
+  food: 
+  spiceLevel: 0
   DishStation: {fileID: 0}

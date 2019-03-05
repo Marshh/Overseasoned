@@ -136,12 +136,12 @@ public class Player : MonoBehaviour
                 item.transform.localPosition = _itemLocalPosition;
             }
 
-            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("MealStation"))
+            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("MealStation") && item == null)
             {
                 item = hit.collider.gameObject.GetComponent<MealSpawners>().getSkillet(transform);
                 item.transform.localPosition = _itemLocalPosition;
             }
-            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Trash"))
+            else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Trash") && item != null)
             {
                 hit.collider.gameObject.GetComponent<Trash>().deleteDish(item);
             }

@@ -9,7 +9,7 @@ public class SpawnCustomer : MonoBehaviour
     public GameObject customer;
     public int numberOfCustomers;
 
-    private List<Transform> childList;
+    private List<Transform> childList=new List<Transform>();
     private List<string> dishes;
     public static SpawnCustomer instance;
     // Start is called before the first frame update
@@ -26,13 +26,12 @@ public class SpawnCustomer : MonoBehaviour
 
     void Start()
     {
-        childList = GetComponentsInChildren<Transform>().ToList();
-        childList.RemoveAt(0);
-        for (int i=0; i <childList.Count; i++)
+        List<Transform> childListtemp = GetComponentsInChildren<Transform>().ToList();
+        foreach (var t in childListtemp)
         {
-            if (!childList[i].CompareTag("Table"))
+            if (t.CompareTag("Table"))
             {
-                childList.RemoveAt(i);
+                childList.Add(t);
             }
         }
         SpawnCustomers();

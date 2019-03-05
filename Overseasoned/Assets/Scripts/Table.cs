@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,7 @@ public class Table : MonoBehaviour
     public bool occupied;
     public GameObject customer;
     public GameObject dish;
+    public TextMeshProUGUI OrderText;
 
     public FloatUnityEvent OnScoreEvent = new FloatUnityEvent();
     // Start is called before the first frame update
@@ -34,6 +36,9 @@ public class Table : MonoBehaviour
     public void SetCustomer(GameObject customer)
     {
         this.customer = customer;
+
+        OrderText.text =
+            $"Customer Order:\n {customer.GetComponent<Customer>().food} w\\ Spice Level: {customer.GetComponent<Customer>().spiceLevel}";
     }
 
     void CheckDish()
