@@ -47,7 +47,7 @@ public class Table : MonoBehaviour
                 dish = hit.collider.gameObject;
                 hit.collider.gameObject.transform.parent.gameObject.GetComponent<Player>().item=null;
                 dish.transform.SetParent(transform);
-                dish.transform.localPosition = new Vector3(-1, dish.GetComponent<Renderer>().bounds.size.y, 0);
+                dish.transform.localPosition = new Vector3(-1, dish.GetComponent<Renderer>().bounds.size.y*3.5f, 0);
                 dish.GetComponent<Rigidbody>().detectCollisions = false;
 //                if (hit.collider.gameObject.name == customer.GetComponent<Customer>().food)
 //                {
