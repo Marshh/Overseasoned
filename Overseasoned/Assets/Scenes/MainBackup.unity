@@ -1202,6 +1202,16 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.17318489
       objectReference: {fileID: 0}
+    - target: {fileID: 3528335223774558697, guid: 3e924af7be38d406bb11f0d863102f22,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528335223774558697, guid: 3e924af7be38d406bb11f0d863102f22,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4800068571649998154, guid: 3e924af7be38d406bb11f0d863102f22, type: 3}
     - {fileID: 8387047127085606523, guid: 3e924af7be38d406bb11f0d863102f22, type: 3}
@@ -4215,6 +4225,16 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.17318489
       objectReference: {fileID: 0}
+    - target: {fileID: 3528335223774558697, guid: 3e924af7be38d406bb11f0d863102f22,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528335223774558697, guid: 3e924af7be38d406bb11f0d863102f22,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4800068571649998154, guid: 3e924af7be38d406bb11f0d863102f22, type: 3}
     - {fileID: 8387047127085606523, guid: 3e924af7be38d406bb11f0d863102f22, type: 3}
@@ -4981,6 +5001,16 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.17318489
       objectReference: {fileID: 0}
+    - target: {fileID: 3528335223774558697, guid: 3e924af7be38d406bb11f0d863102f22,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528335223774558697, guid: 3e924af7be38d406bb11f0d863102f22,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4800068571649998154, guid: 3e924af7be38d406bb11f0d863102f22, type: 3}
     - {fileID: 8387047127085606523, guid: 3e924af7be38d406bb11f0d863102f22, type: 3}
@@ -5505,6 +5535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4.682779
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136297491836884539, guid: d0aa030952f0a64489ebdd549ac9c92a,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2136297491836884536, guid: d0aa030952f0a64489ebdd549ac9c92a,
         type: 3}

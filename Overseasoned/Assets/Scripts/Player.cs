@@ -89,6 +89,7 @@ public class Player : MonoBehaviour
                 //Pick up plate
                 item = hit.collider.gameObject.GetComponent<DishStation>().getDish(transform);
                 item.transform.localPosition = _itemLocalPosition;
+                item.GetComponent<MeshCollider>().isTrigger = true;
 
             }
             else if (hit.collider.CompareTag("PrepStation"))

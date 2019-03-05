@@ -88,7 +88,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769952593}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Spice: {fileID: 0}
   SpawnTimer: 10
-  text: {fileID: 8734423842587442244}
+  TipText: {fileID: 0}
 --- !u!1 &1085898870392818002
 GameObject:
   m_ObjectHideFlags: 0

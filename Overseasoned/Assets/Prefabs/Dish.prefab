@@ -94,6 +94,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Spiciness: 0
   ingredients: []
+  spices: []
+  numSpices: 0
 --- !u!54 &5685970602589994017
 Rigidbody:
   m_ObjectHideFlags: 0
