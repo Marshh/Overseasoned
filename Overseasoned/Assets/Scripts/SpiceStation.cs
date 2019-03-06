@@ -10,13 +10,20 @@ public class SpiceStation : MonoBehaviour
     public float SpawnTimer;
     private float _countDown;
     public TextMeshProUGUI TipText;
+    public TextMeshProUGUI SLText;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         spawnSpice();
-        TipText.text = $"{Spice.name}\nStation";
 
+
+    }
+
+    void Start()
+    {
+        TipText.text = $"{Spice.name}\nStation";
+        SLText.text = $"SL: {_spiceInstance.GetComponent<PickedUp>().spiceLevel}";
     }
 
     // Update is called once per frame
