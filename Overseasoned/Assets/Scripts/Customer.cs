@@ -25,6 +25,9 @@ public class Customer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int sec = Mathf.FloorToInt(timeleft % 60);
+        this.transform.parent.GetComponent<Table>().OrderText.text =
+            $"Customer Order:\n {food} w\\ Spice Level: {spiceLevel}\n{sec:D2}";
         timeleft -= Time.deltaTime;
         if (timeleft < 0)
         {
@@ -35,13 +38,14 @@ public class Customer : MonoBehaviour
             timeleft = totaltime;
         }
         //CheckDish();
+
     }
 
     void CustomerLeft()
     {
         if (transform.parent.GetComponent<Table>().dish == null)
         {
-            transform.parent.GetComponent<Table>().OnScoreEvent.Invoke(-1000);
+            transform.parent.GetComponent<Table>().OnScoreEvent.Invoke(-200);
         }
         this.transform.parent.GetComponent<Table>().OrderText.text = "No Customer";
         SpawnCustomer.instance.numberOfCustomers -= 1;

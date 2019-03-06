@@ -38,8 +38,7 @@ public class Table : MonoBehaviour
     {
         this.customer = customer;
 
-        OrderText.text =
-            $"Customer Order:\n {customer.GetComponent<Customer>().food} w\\ Spice Level: {customer.GetComponent<Customer>().spiceLevel}";
+        
     }
 
     void CheckDish()
