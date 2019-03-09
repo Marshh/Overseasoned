@@ -35,43 +35,147 @@ public class Player : MonoBehaviour
         Interaction();
         
         ClearAlertText();
+        Movement();
     }
 
     void FixedUpdate()
     {
-        Movement();
+       
     }
 
 
-  
     void Movement()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 mousePos2 = Input.mousePosition;
-        Vector3 playerPos = Camera.main.WorldToScreenPoint(transform.position);
-
-        mousePos.z = Mathf.Abs(Camera.main.transform.position.y - transform.position.y);
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
-        mousePos.y = transform.position.y;
-
-        transform.LookAt(mousePos, Vector3.up);
-
-
-
-        if ((Mathf.Abs(playerPos.x - mousePos2.x) > 20) || (Mathf.Abs(playerPos.y - mousePos2.y) > 60))
+        if (Input.GetKey(KeyCode.W))
         {
-            //Debug.Log("IS MY CONDITIONAL A JOKE TO YOU, C SHARP");
-            float movementModifierZ = Input.GetAxisRaw("Vertical");
-            //            transform.Translate();
-            //transform.Translate(new Vector3(0, 0, movementModifierZ) * Speed * Time.deltaTime);
-            Vector3 movement = transform.TransformDirection(new Vector3(0, 0, movementModifierZ) * Speed * Time.deltaTime);
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position+ movement);
-
+            if (Input.GetKey(KeyCode.D))
+            {
+                //Up and Right, rotation = 225
+                this.transform.localEulerAngles = new Vector3(0, 225, 0);
+            }
+            else if(Input.GetKey(KeyCode.A))
+            {
+                this.transform.localEulerAngles = new Vector3(0, 135, 0);
+            }
+            else
+            {
+                //Up, rotation = 180
+                this.transform.localEulerAngles = new Vector3(0, 180, 0);
+            }
+            transform.position += transform.forward * Time.deltaTime * Speed;
         }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                //Up and Right, rotation = 225
+                this.transform.localEulerAngles = new Vector3(0, 225, 0);
+            }
+            else if(Input.GetKey(KeyCode.S))
+            {
+                this.transform.localEulerAngles = new Vector3(0, 315, 0);
+            }
+            else
+            {
+                //Right, rotation = 270
+                this.transform.localEulerAngles = new Vector3(0, 270, 0);
+            }
+            transform.position += transform.forward * Time.deltaTime * Speed;
+        }
+        else if(Input.GetKey(KeyCode.S))
+        {
+            if(Input.GetKey(KeyCode.D))
+            {
+                this.transform.localEulerAngles = new Vector3(0, 315, 0);
+            }
+            else if(Input.GetKey(KeyCode.A))
+            {
+                this.transform.localEulerAngles = new Vector3(0, 45, 0);
+            }
+            else
+            {
+                this.transform.localEulerAngles = new Vector3(0, 0, 0);
+            }
+            transform.position += transform.forward * Time.deltaTime * Speed;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            if(Input.GetKey(KeyCode.W))
+            {
+                this.transform.localEulerAngles = new Vector3(0, 135, 0);
+            }
+            else if(Input.GetKey(KeyCode.S))
+            {
+                this.transform.localEulerAngles = new Vector3(0, 45, 0);
+            }
+            else
+            {
+                this.transform.localEulerAngles = new Vector3(0, 90, 0);
+            }
+            transform.position += transform.forward * Time.deltaTime * Speed;
+        }
+                
+        //else if(Input.GetKey(KeyCode.S))
+        //{
+        //    //Down, rotation = 0
+        //    this.transform.localEulerAngles = new Vector3(0, 0, 0);
+        //}
+        //else if (Input.GetKey(KeyCode.A))
+        //{
+        //    //Left, rotation = 90
+        //    this.transform.localEulerAngles = new Vector3(0, 90, 0);
+        //}
 
-
+        //else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+        //{
+        //    //Up and Right, rotation = 225
+        //    this.transform.localEulerAngles = new Vector3(0, 225, 0);
+        //}
+        //else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        //{
+        //    //Up and Left, rotation = 135
+        //    this.transform.localEulerAngles = new Vector3(0, 135, 0);
+        //}
+        //else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+        //{
+        //    //Down and Right, rotation = 315
+        //    this.transform.localEulerAngles = new Vector3(0, 315, 0);
+        //}
+        //else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+        //{
+        //    //Down and Left, rotation = 45
+        //    this.transform.localEulerAngles = new Vector3(0, 45, 0);
+        //}
     }
+
+    //void Movement()
+    //{
+    //    Vector3 mousePos = Input.mousePosition;
+    //    Vector3 mousePos2 = Input.mousePosition;
+    //    Vector3 playerPos = Camera.main.WorldToScreenPoint(transform.position);
+
+    //    mousePos.z = Mathf.Abs(Camera.main.transform.position.y - transform.position.y);
+    //    mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+    //    mousePos.y = transform.position.y;
+
+    //    transform.LookAt(mousePos, Vector3.up);
+
+
+
+    //    if ((Mathf.Abs(playerPos.x - mousePos2.x) > 20) || (Mathf.Abs(playerPos.y - mousePos2.y) > 60))
+    //    {
+    //        //Debug.Log("IS MY CONDITIONAL A JOKE TO YOU, C SHARP");
+    //        float movementModifierZ = Input.GetAxisRaw("Vertical");
+    //        //            transform.Translate();
+    //        //transform.Translate(new Vector3(0, 0, movementModifierZ) * Speed * Time.deltaTime);
+    //        Vector3 movement = transform.TransformDirection(new Vector3(0, 0, movementModifierZ) * Speed * Time.deltaTime);
+    //        GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position+ movement);
+
+    //    }
+
+
+    //}
 
 
     void Interaction()
