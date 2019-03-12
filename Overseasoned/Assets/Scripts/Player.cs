@@ -46,14 +46,14 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.S))
         {
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.A))
             {
                 //Up and Right, rotation = 225
                 this.transform.localEulerAngles = new Vector3(0, 225, 0);
             }
-            else if(Input.GetKey(KeyCode.A))
+            else if(Input.GetKey(KeyCode.D))
             {
                 this.transform.localEulerAngles = new Vector3(0, 135, 0);
             }
@@ -64,14 +64,14 @@ public class Player : MonoBehaviour
             }
             transform.position += transform.forward * Time.deltaTime * Speed;
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.A))
         {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.S))
             {
                 //Up and Right, rotation = 225
                 this.transform.localEulerAngles = new Vector3(0, 225, 0);
             }
-            else if(Input.GetKey(KeyCode.S))
+            else if(Input.GetKey(KeyCode.W))
             {
                 this.transform.localEulerAngles = new Vector3(0, 315, 0);
             }
@@ -82,13 +82,13 @@ public class Player : MonoBehaviour
             }
             transform.position += transform.forward * Time.deltaTime * Speed;
         }
-        else if(Input.GetKey(KeyCode.S))
+        else if(Input.GetKey(KeyCode.W))
         {
-            if(Input.GetKey(KeyCode.D))
+            if(Input.GetKey(KeyCode.A))
             {
                 this.transform.localEulerAngles = new Vector3(0, 315, 0);
             }
-            else if(Input.GetKey(KeyCode.A))
+            else if(Input.GetKey(KeyCode.D))
             {
                 this.transform.localEulerAngles = new Vector3(0, 45, 0);
             }
@@ -98,13 +98,13 @@ public class Player : MonoBehaviour
             }
             transform.position += transform.forward * Time.deltaTime * Speed;
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.D))
         {
-            if(Input.GetKey(KeyCode.W))
+            if(Input.GetKey(KeyCode.S))
             {
                 this.transform.localEulerAngles = new Vector3(0, 135, 0);
             }
-            else if(Input.GetKey(KeyCode.S))
+            else if(Input.GetKey(KeyCode.W))
             {
                 this.transform.localEulerAngles = new Vector3(0, 45, 0);
             }
