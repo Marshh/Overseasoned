@@ -20,7 +20,7 @@ public class Customer : MonoBehaviour
         instance = this;
         completed = false;
         eatingTime = 5f;
-        spiceLevel = Random.Range(0, 6);
+        spiceLevel = Random.Range(0, 8);
         timeleft = totaltime;
     }
 
