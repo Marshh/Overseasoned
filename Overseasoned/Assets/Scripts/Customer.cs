@@ -11,6 +11,7 @@ public class Customer : MonoBehaviour
     public string food;
     public int spiceLevel;
     public float timeleft;
+    public float eatingTime;
 
     public GameObject DishStation;
     // Start is called before the first frame update
@@ -18,7 +19,8 @@ public class Customer : MonoBehaviour
     {
         instance = this;
         completed = false;
-        spiceLevel = Random.Range(0, 17);
+        eatingTime = 5f;
+        spiceLevel = Random.Range(0, 6);
         timeleft = totaltime;
     }
 
@@ -26,8 +28,17 @@ public class Customer : MonoBehaviour
     void Update()
     {
         int sec = Mathf.FloorToInt(timeleft % 60);
-        this.transform.parent.GetComponent<Table>().OrderText.text =
+        if (completed)
+        {
+            Debug.Log(completed);
+            OrderComplete();
+            this.transform.parent.GetComponent<Table>().OrderText.text = $"\nDone!";
+        }
+        else
+        {
+            this.transform.parent.GetComponent<Table>().OrderText.text =
             $"Customer Order:\n {food} w\\ Spice Level: {spiceLevel}\n{sec:D2}";
+        }
         timeleft -= Time.deltaTime;
         if (timeleft < 0)
         {
@@ -45,11 +56,20 @@ public class Customer : MonoBehaviour
     {
         if (transform.parent.GetComponent<Table>().dish == null)
         {
-            transform.parent.GetComponent<Table>().OnScoreEvent.Invoke(-200);
+            transform.parent.GetComponent<Table>().OnScoreEvent.Invoke(-50);
         }
         this.transform.parent.GetComponent<Table>().OrderText.text = "No Customer";
         SpawnCustomer.instance.numberOfCustomers -= 1;
         Destroy(this.gameObject);
+    }
+
+    void OrderComplete()
+    { 
+        if (timeleft > 5)
+        {
+            Debug.Log("Time Changed!");
+            timeleft = eatingTime;
+        }
     }
 
     void RespawnDish()

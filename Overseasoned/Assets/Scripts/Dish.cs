@@ -52,7 +52,7 @@ public class Dish : MonoBehaviour
 //        hasAll = false;
         ingredients.Clear();
     }
-
+    
     //    public void checkCurry()
     //    {
     //        List<string> curryIngredients = new List<string> {"Rice", "Curry"};

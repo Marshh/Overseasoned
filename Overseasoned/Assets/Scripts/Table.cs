@@ -74,7 +74,11 @@ public class Table : MonoBehaviour
         {
             if (food =="Steak" || food=="Curry" || food == "Soup")
             {
-                baseScore = (food == customer.GetComponent<Customer>().food) ? 100 : -200;
+                baseScore = (food == customer.GetComponent<Customer>().food) ? 200 : -50;
+                if (food == customer.GetComponent<Customer>().food)
+                {
+                    customer.GetComponent<Customer>().completed = true;
+                }
                 break;
             }
         }

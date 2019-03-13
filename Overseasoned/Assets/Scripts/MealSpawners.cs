@@ -29,7 +29,7 @@ public class MealSpawners : MonoBehaviour
             if (timer < 0)
             {
                 spawnMeal();
-                timer = 30f;
+                timer = 5f;
             }
         }
     }
