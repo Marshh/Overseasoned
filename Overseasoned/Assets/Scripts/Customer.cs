@@ -42,9 +42,7 @@ public class Customer : MonoBehaviour
         timeleft -= Time.deltaTime;
         if (timeleft < 0)
         {
-            //if(completed) RespawnDish();
             RespawnDish();
-
             CustomerLeft();
             timeleft = totaltime;
         }
@@ -56,7 +54,16 @@ public class Customer : MonoBehaviour
     {
         if (transform.parent.GetComponent<Table>().dish == null)
         {
-            transform.parent.GetComponent<Table>().OnScoreEvent.Invoke(-50);
+            if (ScoreManager.instance.score < 50)
+            {
+                float temp = ScoreManager.instance.score;
+                transform.parent.GetComponent<Table>().OnScoreEvent.Invoke(temp);
+            }
+            else
+            {
+                transform.parent.GetComponent<Table>().OnScoreEvent.Invoke(-50);
+            }
+
         }
         this.transform.parent.GetComponent<Table>().OrderText.text = "No Customer";
         SpawnCustomer.instance.numberOfCustomers -= 1;

@@ -6,10 +6,13 @@ public class PrepStation : MonoBehaviour
 {
 
     public GameObject dish;
+    public GameObject dishContents;
     public bool isOccupied;
+    public static PrepStation instance;
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         isOccupied = false;
     }
 

@@ -16,8 +16,6 @@ public class SpiceStation : MonoBehaviour
     void Awake()
     {
         spawnSpice();
-
-
     }
 
     void Start()

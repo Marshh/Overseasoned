@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dish: {fileID: 0}
+  dishContents: {fileID: 1961171473999560091, guid: 0deed289882df4ccaa5c0dae98fc4cf1,
+    type: 3}
   isOccupied: 0
 --- !u!1 &6305765877431805567
 GameObject:

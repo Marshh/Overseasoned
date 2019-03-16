@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
 {
     public GameObject DishPrefab;
     public GameObject item;
+    public AudioSource audioSource;
+    public AudioClip seasoning;
+    public AudioClip food;
+    public static Player instance;
     public float Speed;
 
     private Vector3 _itemLocalPosition = new Vector3(0, .25f, 1);
@@ -23,7 +27,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        instance = this;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -31,6 +36,10 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.E))
         {
             LoadingBar.fillAmount = 0;
+            if (item != null)
+            {
+                DisplayAlertText("");
+            }
         }
         Interaction();
         
@@ -194,29 +203,43 @@ public class Player : MonoBehaviour
                 item = hit.collider.gameObject.GetComponent<DishStation>().getDish(transform);
                 item.transform.localPosition = _itemLocalPosition;
                 item.GetComponent<MeshCollider>().isTrigger = true;
-
             }
             else if (hit.collider.CompareTag("PrepStation"))
             {
                 //Place plate
+                if (item != null && Input.GetKeyDown(KeyCode.E) && hit.collider.gameObject.GetComponent<PrepStation>().isOccupied == true)
+                {
+                    if (item.CompareTag("Spice"))
+                    {
+                        audioSource.clip = seasoning;
+                        audioSource.Play();
+                    }
+                    if (item.CompareTag("Skillet"))
+                    {
+                        audioSource.clip = food;
+                        audioSource.Play();
+                    }
+                }
                 if (Input.GetKeyDown(KeyCode.E) && item != null && item.CompareTag("Dish") && hit.collider.gameObject.GetComponent<PrepStation>().isOccupied == false)
                 {
                     hit.collider.gameObject.GetComponent<PrepStation>().PlaceDish(item);
                     item = null;
+                    DishesContents.instance.CreateDish();
                 }
                 else if (item != null && item.CompareTag("Spice") && Input.GetKey(KeyCode.E) && hit.collider.gameObject.GetComponent<PrepStation>().isOccupied == true)
                 {
                     if (LoadingBar.fillAmount < 1.0f)
                     {
+                        DisplayAlertText($"Adding {item.name}");
                         LoadingBar.fillAmount += 0.025f;
                     }
-
                     else if (LoadingBar.fillAmount >= 1.0f)
                     {
+                        audioSource.Pause();
                         int spiceLevel = item.gameObject.GetComponent<PickedUp>().spiceLevel;
                         LoadingBar.fillAmount = 0;
-                        hit.collider.gameObject.GetComponent<PrepStation>().AddIngredient(item.name);
                         hit.collider.gameObject.GetComponent<PrepStation>().AddSpice(item.name, spiceLevel);
+                        DishesContents.instance.ChangeSpiceLevel(spiceLevel);
                         Destroy(item);
                         DisplayAlertText($"Added {item.name}");
                     }
@@ -226,13 +249,15 @@ public class Player : MonoBehaviour
                 {
                     if (LoadingBar.fillAmount < 1.0f)
                     {
+                        DisplayAlertText($"Adding {item.name}");
                         LoadingBar.fillAmount += 0.025f;
                     }
-
                     else if (LoadingBar.fillAmount >= 1.0f)
                     {
+                        audioSource.Pause();
                         LoadingBar.fillAmount = 0;
                         hit.collider.gameObject.GetComponent<PrepStation>().AddIngredient(item.name);
+                        DishesContents.instance.ChangeFood(item.name);
                         Destroy(item);
                         DisplayAlertText($"Added {item.name}");
                     }
@@ -259,6 +284,7 @@ public class Player : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.E) && hit.collider.CompareTag("Trash") && item != null)
             {
                 hit.collider.gameObject.GetComponent<Trash>().deleteDish(item);
+                DisplayAlertText($"Cleared Dish");
             }
         }
     }
@@ -283,5 +309,5 @@ public class Player : MonoBehaviour
             _alerttexttimer -= Time.deltaTime;
         }
     }
-  
+
 }

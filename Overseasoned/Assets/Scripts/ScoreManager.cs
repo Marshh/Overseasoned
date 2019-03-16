@@ -47,6 +47,10 @@ public class ScoreManager : MonoBehaviour
             SceneManager.LoadScene("EndMenu");
 
         }
+        if (time < 60)
+        {
+            AudioManager.instance.SecondSpeedUp();
+        }
         int min = Mathf.FloorToInt(time / 60);
         int sec = Mathf.FloorToInt(time % 60);
         ScoreText.text = $"Time: {min}:{sec:D2}\nScore: {Mathf.FloorToInt(score)}";

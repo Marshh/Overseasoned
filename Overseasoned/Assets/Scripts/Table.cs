@@ -15,6 +15,8 @@ public class Table : MonoBehaviour
     public GameObject customer;
     public GameObject dish;
     public TextMeshProUGUI OrderText;
+    public AudioClip complete;
+    public AudioSource audioSource;
 
     public FloatUnityEvent OnScoreEvent = new FloatUnityEvent();
     // Start is called before the first frame update
@@ -25,7 +27,7 @@ public class Table : MonoBehaviour
         direction = transform.TransformDirection(new Vector3(0, 1f, 0));
         occupied = false;
         Debug.DrawRay(sphereCastPos, direction);
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,8 +39,6 @@ public class Table : MonoBehaviour
     public void SetCustomer(GameObject customer)
     {
         this.customer = customer;
-
-        
     }
 
     void CheckDish()
@@ -47,19 +47,23 @@ public class Table : MonoBehaviour
 
         if (Physics.SphereCast(transform.position-new Vector3(0,2,0), radius, direction, out RaycastHit hit, Mathf.Infinity,layerMask))
         {
-            if (hit.collider.CompareTag("Dish") && Input.GetKeyDown(KeyCode.E) && dish == null && customer!=null)
+            if (hit.collider.CompareTag("Dish") && Input.GetKeyDown(KeyCode.E) && dish == null && customer != null )
             {
-                dish = hit.collider.gameObject;
-                hit.collider.gameObject.transform.parent.gameObject.GetComponent<Player>().item=null;
-                dish.transform.SetParent(transform);
-                dish.transform.localPosition = new Vector3(-1, dish.GetComponent<Renderer>().bounds.size.y*3.5f, 0);
-                dish.GetComponent<Rigidbody>().detectCollisions = false;
-//                if (hit.collider.gameObject.name == customer.GetComponent<Customer>().food)
-//                {
-//                    //customer.GetComponent<Customer>().spiceLevel == hit.collider.gameObject.GetComponent<Dish>().Spiciness
-//                    print("success");
-//                }
-                ComputeScore(dish);
+                if (hit.collider.GetComponent<Dish>().ingredients[0] == customer.GetComponent<Customer>().food)
+                {
+                    dish = hit.collider.gameObject;
+                    hit.collider.gameObject.transform.parent.gameObject.GetComponent<Player>().item = null;
+                    dish.transform.SetParent(transform);
+                    dish.transform.localPosition = new Vector3(-1, dish.GetComponent<Renderer>().bounds.size.y * 3.5f, 0);
+                    dish.GetComponent<Rigidbody>().detectCollisions = false;
+                    ComputeScore(dish);
+                    audioSource.clip = complete;
+                    audioSource.Play();
+                }
+                else
+                {
+                    Player.instance.AlertText.text = "Wrong Dish!";
+                }
             }
         }
     }

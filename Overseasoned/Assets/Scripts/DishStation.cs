@@ -31,7 +31,6 @@ public class DishStation : MonoBehaviour
     {
         _countDown = SpawnTimer;
         Vector3 unitAbove = this.transform.position+new Vector3(0,height,0);
-
         _DishInstance = Instantiate(Dish, unitAbove, Quaternion.identity);
         //Remove (clone)
         _DishInstance.name = Dish.name;
