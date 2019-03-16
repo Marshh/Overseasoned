@@ -11,7 +11,7 @@ public class DisplayScore : MonoBehaviour
     {
         GameObject LevelManager=GameObject.Find("LevelManager");
         float score = LevelManager.GetComponent<ScoreManager>().score;
-        ScoreText.text = $"Score: {score}";
+        ScoreText.text = $"Score: {Mathf.FloorToInt(score)}";
         Destroy(LevelManager);
     }
 
