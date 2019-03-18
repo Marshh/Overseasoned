@@ -62,4 +62,12 @@ public class ScoreManager : MonoBehaviour
         print(score);
 
     }
+
+    public void restart()
+    {
+        score = 0;
+        Tables = null;
+        time = 180;
+        Start();
+    }
 }
