@@ -71,7 +71,10 @@ public class Player : MonoBehaviour
                 //Up, rotation = 180
                 this.transform.localEulerAngles = new Vector3(0, 180, 0);
             }
-            transform.position += transform.forward * Time.deltaTime * Speed;
+            if (!padCollision())
+            {
+                transform.position += transform.forward * Time.deltaTime * Speed;
+            }
         }
         else if (Input.GetKey(KeyCode.A))
         {
@@ -89,7 +92,10 @@ public class Player : MonoBehaviour
                 //Right, rotation = 270
                 this.transform.localEulerAngles = new Vector3(0, 270, 0);
             }
-            transform.position += transform.forward * Time.deltaTime * Speed;
+            if (!padCollision())
+            {
+                transform.position += transform.forward * Time.deltaTime * Speed;
+            }
         }
         else if(Input.GetKey(KeyCode.W))
         {
@@ -105,7 +111,10 @@ public class Player : MonoBehaviour
             {
                 this.transform.localEulerAngles = new Vector3(0, 0, 0);
             }
-            transform.position += transform.forward * Time.deltaTime * Speed;
+            if (!padCollision())
+            {
+                transform.position += transform.forward * Time.deltaTime * Speed;
+            }
         }
         else if (Input.GetKey(KeyCode.D))
         {
@@ -121,40 +130,25 @@ public class Player : MonoBehaviour
             {
                 this.transform.localEulerAngles = new Vector3(0, 90, 0);
             }
-            transform.position += transform.forward * Time.deltaTime * Speed;
+            if (!padCollision())
+            {
+                transform.position += transform.forward * Time.deltaTime * Speed;
+            }
         }
-                
-        //else if(Input.GetKey(KeyCode.S))
-        //{
-        //    //Down, rotation = 0
-        //    this.transform.localEulerAngles = new Vector3(0, 0, 0);
-        //}
-        //else if (Input.GetKey(KeyCode.A))
-        //{
-        //    //Left, rotation = 90
-        //    this.transform.localEulerAngles = new Vector3(0, 90, 0);
-        //}
+    }
 
-        //else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
-        //{
-        //    //Up and Right, rotation = 225
-        //    this.transform.localEulerAngles = new Vector3(0, 225, 0);
-        //}
-        //else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
-        //{
-        //    //Up and Left, rotation = 135
-        //    this.transform.localEulerAngles = new Vector3(0, 135, 0);
-        //}
-        //else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
-        //{
-        //    //Down and Right, rotation = 315
-        //    this.transform.localEulerAngles = new Vector3(0, 315, 0);
-        //}
-        //else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
-        //{
-        //    //Down and Left, rotation = 45
-        //    this.transform.localEulerAngles = new Vector3(0, 45, 0);
-        //}
+    bool padCollision()
+    {
+        Vector3 fwd = transform.TransformDirection(new Vector3(0, 0, 5));
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + new Vector3(0, -.50f, 0), fwd, out hit, .75f))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     //void Movement()
